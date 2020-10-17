@@ -9,6 +9,7 @@ class Location(models.Model):
     state = models.CharField(max_length=100)   
     county = models.CharField(max_length=100, blank=True)
     country = models.CharField(max_length=3, blank=True)
+    phone = models.CharField(max_length=50, blank=True)
     is_restaurant = models.BooleanField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

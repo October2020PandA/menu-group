@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>{{title}}</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <div class="container">
+            <div class="card mx-auto mt-3">
+                <h5 class="card-header">{{cardHeader}}</h5>
+                <div class="card-body">
+            <form action="" method="POST">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-2">
+                        <div class="custom-control custom-switch mt-2">
+                            <input type="checkbox" class="custom-control-input" id="monday" name="monday">
+                            <label class="custom-control-label" for="monday">Monday</label>
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="monOpen">Open Time:</span>
+                                </div>
+                                <input type="time" class="form-control" id="monday-open" name="monday-open" aria-describedby="monOpen" disabled>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="monClose">Close Time:</span>
+                                </div>
+                                <input type="time" class="form-control" id="monday-close" name="monday-close" aria-describedby="monClose" disabled>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-2">
+                        <div class="custom-control custom-switch mt-2">
+                            <input type="checkbox" class="custom-control-input" id="tuesday" name="tuesday">
+                            <label class="custom-control-label" for="tuesday">Tuesday</label>
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="tuesOpen">Open Time:</span>
+                                </div>
+                                <input type="time" class="form-control" id="tuesday-open" name="tuesday-open" aria-describedby="tuesOpen" disabled>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="tuesClose">Close Time:</span>
+                                </div>
+                                <input type="time" class="form-control" id="tuesday-close" name="tuesday-close" aria-describedby="tuesClose" disabled>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-2">
+                        <div class="custom-control custom-switch mt-2">
+                            <input type="checkbox" class="custom-control-input" id="wednesday" name="wednesday">
+                            <label class="custom-control-label" for="wednesday">Wednesday</label>
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="wedOpen">Open Time:</span>
+                                </div>
+                                <input type="time" class="form-control" id="wednesday-open" name="wednesday-open" aria-describedby="wedOpen" disabled>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="wedClose">Close Time:</span>
+                                </div>
+                                <input type="time" class="form-control" id="wednesday-close" name="wednesday-close" aria-describedby="wedClose" disabled>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-2">
+                        <div class="custom-control custom-switch mt-2">
+                            <input type="checkbox" class="custom-control-input" id="thursday" name="thursday">
+                            <label class="custom-control-label" for="thursday">Thursday</label>
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="thurOpen">Open Time:</span>
+                                </div>
+                                <input type="time" class="form-control" id="thursday-open" name="thursday-open" aria-describedby="thurOpen" disabled>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="thurClose">Close Time:</span>
+                                </div>
+                                <input type="time" class="form-control" id="thursday-close" name="thursday-close" aria-describedby="thurClose" disabled>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-2">
+                        <div class="custom-control custom-switch mt-2">
+                            <input type="checkbox" class="custom-control-input" id="friday" name="friday">
+                            <label class="custom-control-label" for="friday">Friday</label>
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="friOpen">Open Time:</span>
+                                </div>
+                                <input type="time" class="form-control" id="friday-open" name="friday-open" aria-describedby="friOpen" disabled>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="friClose">Close Time:</span>
+                                </div>
+                                <input type="time" class="form-control" id="friday-close" name="friday-close" aria-describedby="friClose" disabled>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-2">
+                        <div class="custom-control custom-switch mt-2">
+                            <input type="checkbox" class="custom-control-input" id="saturday" name="saturday">
+                            <label class="custom-control-label" for="saturday">Saturday</label>
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="satOpen">Open Time:</span>
+                                </div>
+                                <input type="time" class="form-control" id="saturday-open" name="saturday-open" aria-describedby="satOpen" disabled>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="satClose">Close Time:</span>
+                                </div>
+                                <input type="time" class="form-control" id="saturday-close" name="saturday-close" aria-describedby="satClose" disabled>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-2">
+                        <div class="custom-control custom-switch mt-2">
+                            <input type="checkbox" class="custom-control-input" id="sunday" name="sunday">
+                            <label class="custom-control-label" for="sunday">Sunday</label>
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="sunOpen">Open Time:</span>
+                                </div>
+                                <input type="time" class="form-control" id="sunday-open" name="sunday-open" aria-describedby="sunOpen" disabled>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="sunClose">Close Time:</span>
+                                </div>
+                                <input type="time" class="form-control" id="sunday-close" name="sunday-close" aria-describedby="sunClose" disabled>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-primary" type="submit">Save &amp; Finish Registration</button>
+            </form>
+            </div>
+            </div>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script>
+            var weekDay = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];
+            for (var i = 0; i < weekDay.length; i++) {
+                var openId = weekDay[i] + "-open";
+                var closeId = weekDay[i] + "-close";
+                if ($("#" + weekDay[i]).children().is(":checked")) {
+                    $("#" + openId).prop("disabled", false);
+                    $("#" + closeId).prop("disabled", false);
+                    $("#" + weekDay[i]).parent().parent().parent().children(".col-sm").children().children().children(".form-control").fadeIn();
+                } else {
+                    $("#" + openId).prop("disabled", true);
+                    $("#" + closeId).prop("disabled", true);
+                    $("#" + weekDay[i]).parent().parent().parent().children(".col-sm").children().children().children(".form-control").fadeOut();
+                }
+            }
+            $(".custom-switch").on("click", function() {
+                var openId = $(this).children().attr("id") + "-open";
+                var closeId = $(this).children().attr("id") + "-close";
+                if ($(this).children().is(":checked")) {
+                    $("#" + openId).prop("disabled", false);
+                    $("#" + closeId).prop("disabled", false);
+                    $(this).parent().parent().children(".col-sm").children().children().children(".form-control").fadeIn();
+                } else {
+                    $("#" + openId).prop("disabled", true);
+                    $("#" + closeId).prop("disabled", true);
+                    $(this).parent().parent().children(".col-sm").children().children().children(".form-control").fadeOut();
+                }
+            })
+        </script>
+    </body>
+</html>
