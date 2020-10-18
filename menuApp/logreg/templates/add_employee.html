@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>{{title}}</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <div class="container">
+            <div class="card mx-auto mt-3">
+                <h5 class="card-header">Registration</h5>
+                <div class="card-body">
+            <form action="" method="POST">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-lg">
+                        <div class="form-group">
+                            <label for="first_name">First Name</label>
+                            <input type="text" class="form-control" id="first_name" name="first_name">
+                        </div>
+                    </div>
+                    <div class="col-lg">
+                        <div class="form-group">
+                            <label for="middle_name">Middle Name</label>
+                            <input type="text" class="form-control" id="middle_name" name="middle_name">
+                        </div>
+                    </div>
+                    <div class="col-lg">
+                        <div class="form-group">
+                            <label for="last_name">Last Name</label>
+                            <input type="text" class="form-control" id="last_name" name="last_name">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" name="email">
+                        </div>  
+                    </div>
+                    <div class="col-md">
+                        <div class="form-group">
+                            <label for="phone_num">Phone</label>
+                            <input type="tel" class="form-control" id="phone_num" name="phone_num">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md">
+                        <div class="form-group">
+                            <label for="pw">Password</label>
+                            <input type="password" class="form-control" id="pw" name="pw" aria-describedby="passwordHelpBlock">
+                            <p id="passwordHelpBlock" class="form-text text-muted">Your password must 8-20 characters long, contain letters and numbers, and must not contain spaces or emoji.</p>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="form-group">
+                            <label for="pw_confirm">Confirm Password</label>
+                            <input type="password" class="form-control" id="pw_confirm" name="pw_confirm">
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-primary" type="submit">Register</button>
+            </form>
+            </div>
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    </body>
+</html>

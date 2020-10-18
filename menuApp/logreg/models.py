@@ -8,15 +8,15 @@ class UserManager(models.Manager):
     def user_validator(self, postData):
         errors = {}
         email_regex = re.compile(r'^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$')
-        existing_email = User.objects.filter(email=postData['email_address'])
+        existing_email = User.objects.filter(email=postData['email'])
         if len(postData['first_name']) < 2 or postData['first_name'].isdigit():
             errors['first_name'] = 'First name must be at least 2 characters long and/or contain no numbers'
         if len(postData['last_name']) < 2 or postData['last_name'].isdigit():
             errors['last_name'] = 'Last name must be at least 2 characters long and/or contain no numbers'
-        if not email_regex.match(postData['email_address']):
-            errors['email_address'] = 'Invalid email address'
+        if not email_regex.match(postData['email']):
+            errors['email'] = 'Invalid email address'
         elif len(existing_email) != 0:
-            errors['email_address'] = 'Email address already linked to a user'
+            errors['email'] = 'Email address already linked to a user'
         if len(postData['pw']) < 8 :
             errors['pw_len'] = 'Password must be at least 8 digits long'
         if postData['pw'].isdigit() and postData['pw'].isalpha():
@@ -26,11 +26,11 @@ class UserManager(models.Manager):
         return errors
     def login_validator(self, postData):
         errors = {}
-        existing_email = User.objects.filter(email=postData['email_address_lg'])
+        existing_email = User.objects.filter(email=postData['email'])
         if len(existing_email) == 0:
-            errors['lg_email_address'] = 'Invalid username'
-        elif not bcrypt.checkpw(postData['pw_lg'].encode(), existing_email[0].pw.encode()):
-            errors['lg_pw'] = 'Invalid username and/or password'
+            errors['email'] = 'Invalid username'
+        elif not bcrypt.checkpw(postData['pw'].encode(), existing_email[0].pw.encode()):
+            errors['pw'] = 'Invalid username and/or password'
         return errors
 
 class User(models.Model):
@@ -40,6 +40,7 @@ class User(models.Model):
     email = models.EmailField(max_length=254)
     phone = models.CharField(max_length=50, blank=True)
     pw = models.CharField(max_length=255)
+    is_authenticated = models.BooleanField(default=True)
     last_login = models.DateTimeField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
