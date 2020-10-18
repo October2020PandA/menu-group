@@ -1,4 +1,7 @@
 from django.db import models
+from datetime import datetime
+import re 
+
 
 # Create your models here.
 class Location(models.Model):
@@ -28,14 +31,15 @@ class Item(models.Model):
     item_name = models.CharField(max_length=255)
     item_desc = models.TextField()
     item_price = models.DecimalField(max_digits=7, decimal_places=3)
-    item_image = models.CharField(max_length=255, blank=True)
+    #Need to create media/images folder to store uploaded images into the database
+    item_image = models.ImageField(upload_to='images/', blank=True, null=True) 
     min_calories = models.IntegerField()
     max_calories = models.IntegerField()
     dietary = models.TextField(blank=True)
     is_available = models.BooleanField()
-    category = models.ForeignKey(Category, related_name='items', related_query_name='items', on_delete=models.CASCADE)
-    subcategory = models.ForeignKey(SubCategory, related_name='items', related_query_name='items', on_delete=models.CASCADE)
-    locations = models.ManyToManyField(Location, related_name='items', related_query_name='items')
+    category = models.ForeignKey(Category, related_name='item_category', related_query_name='items', on_delete=models.CASCADE)
+    subcategory = models.ForeignKey(SubCategory, related_name='item_subcategory', related_query_name='items', on_delete=models.CASCADE)
+    locations = models.ManyToManyField(Location, related_name='item_location', related_query_name='items')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
