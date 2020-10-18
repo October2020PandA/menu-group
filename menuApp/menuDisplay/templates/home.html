@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            {% load static %}
+            {% load bootstrap4 %}
+            {% bootstrap_javascript jquery='full' %}
+            <link rel="stylesheet" href="{% static 'css/app.css' %}">
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+            <link href="https://fonts.googleapis.com/css?family=Questrial" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+            <title>Home</title>
+        </head>
+        <body>
+            <nav class="navbar navbar-expand-md navbar-dark p-4">
+                <a href="#" class="navbar-brand">
+                    <h2 class="mb-0">NAME HERE</h2>
+                </a>
+                <button class="navbar-toggler" data-toggle="collapse" data-target="#mainNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="mainNavbar">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a href="/" class="nav-link">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/menu" class="nav-link">Menu</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/reservations" class="nav-link">Reservations</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/locations" class="nav-link">Locations/Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <div id="home_page_showcase" class="d-flex justify-content-center align-items-center">
+                <div id="header" class= "container text-center text-white">
+                    <h1 class="display-2 mt-5 font-weight-bold">NAME/DESCRIPTION HERE</h1>
+                </div>
+            </div>
+            <div class="container text-center my-5">
+                <h1 class="display-4 font-weight-bold mb-5">A SPECIAL PLACE</h1>
+                <p class="lead mb-5">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Excepturi placeat 
+                    nulla distinctio quos ab obcaecati, quia qui quae est et, consequuntur, 
+                    ipsam saepe? Sequi id aspernatur nam quae modi vel explicabo ab recusandae 
+                    officia minus. Minus quo eveniet modi ad!</p>
+                <hr>
+            </div>
+            <div class="container text-center">
+                <h1 class="display-4 font-weight-bold my-5">COME JOIN US!</h1>
+                <div class="row my-5">
+                    <div class="col-6">
+                        <div class="card p-3 border-primary">
+                            <div class="card-body">
+                              <h1 class="card-title font-weight-bold text-primary mt-3">MENU</h1>
+                              <p class="card-text mt-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                                  Pariatur, quasi culpa, animi odit iusto ad tempora, aperiam provident 
+                                  reprehenderit laborum eum molestias consequatur? Molestias, excepturi?</p>
+                              <a href="/menu" class="btn btn-lg btn-outline-primary my-3">VIEW MENU</a>
+                            </div>
+                          </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="card p-3 border-primary">
+                            <div class="card-body">
+                              <h1 class="card-title font-weight-bold text-primary mt-3">RESERVATIONS</h1>
+                              <p class="card-text mt-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                                Pariatur, quasi culpa, animi odit iusto ad tempora, aperiam provident 
+                                reprehenderit laborum eum molestias consequatur? Molestias, excepturi?</p>
+                              <a href="/reservations" class="btn btn-lg btn-outline-primary my-3">MAKE A RESERVATION</a>
+                            </div>
+                          </div>
+                    </div>    
+                </div>  
+                <hr>                
+            </div>
+            <div id="quotes">
+                <div class="container text-center my-5">
+                    <h1 class="my-5 font-weight-bold">WHAT OUR CUSTOMERS ARE SAYING</h1>
+                    <div class="row">
+                        <div class="col-md-4 my-2">
+                            <i class="fas fa-quote-left fa-2x text-primary mb-3"></i>
+                            <blockquote class="blockquote">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing 
+                                    elit. Integer posuere erat a ante.</p>
+                                    <footer class="blockquote-footer">Mark Twain</footer>
+                            </blockquote>
+                        </div>
+                        <div class="col-md-4 my-2">
+                            <i class="fas fa-quote-left fa-2x text-primary mb-3"></i>
+                            <blockquote class="blockquote">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing 
+                                    elit. Integer posuere erat a ante.</p>
+                                    <footer class="blockquote-footer">Venus Williams</footer>
+                            </blockquote>
+                        </div>
+                        <div class="col-md-4 my-2">
+                            <i class="fas fa-quote-left fa-2x text-primary mb-3"></i>
+                            <blockquote class="blockquote">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing 
+                                    elit. Integer posuere erat a ante.</p>
+                                <footer class="blockquote-footer">Blue Steel</footer>
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="footer" class="p-5">
+                <div class="container">
+                    <div class="container d-flex">
+                        <h2 class="text-white mb-5">LOCATIONS</h2>
+                        <i class="ml-auto text-white fa-2x fab fa-instagram"></i>
+                        <i class="ml-3 text-white fa-2x fab fa-facebook-square"></i>
+                        <i class="ml-3 text-white fa-2x fab fa-twitter-square"></i>
+                        <i class="ml-3 text-white fa-2x fab fa-yelp"></i>
+                    </div>
+                    <div class="row my-2 border rounded p-5 shadow">
+                        <div class="col-3 text-white text-center">
+                            <h4 class="mb-3">ATLANTA</h4>
+                            <p>1126 Coding Dojo Way</p>
+                            <p>Atlanta, GA 13572</p>
+                            <p>(123) 456-7890</p>
+                            <p>Mon-Sun 10 AM - 10PM</p>
+                        </div>
+                        <div class="col-3 text-white text-center">
+                            <h4 class="mb-3">DALLAS</h4>
+                            <p>1126 Coding Dojo Way</p>
+                            <p>Dallas, TX 13572</p>
+                            <p>(123) 456-7890</p>
+                            <p>Mon-Sun 10 AM - 10PM</p>
+                        </div>
+                        <div class="col-3 text-white text-center">
+                            <h4 class="mb-3">SEATTLE</h4>
+                            <p>1126 Coding Dojo Way</p>
+                            <p>Seattle, WA 13572</p>
+                            <p>(123) 456-7890</p>
+                            <p>Mon-Sun 10 AM - 10PM</p>
+                        </div>
+                        <div class="col-3 text-white text-center">
+                            <h4 class="mb-3">PITTSBURGH</h4>
+                            <p>1126 Coding Dojo Way</p>
+                            <p>Pittsburgh, PA 13572</p>
+                            <p>(123) 456-7890</p>
+                            <p>Mon-Sun 10 AM - 10PM</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </body>
+    </html>
