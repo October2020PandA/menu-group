@@ -41,16 +41,16 @@
             <div id="locations_showcase" class="d-flex justify-content-center align-items-center">
                 <div id="overlay"></div>
                 <div id="header" class= "container text-center text-white">
-                    <h1 class="display-2 mt-5 font-weight-bold">RESERVATIONS</h1>
+                    <h1 id="locations_heading" class="display-2 mt-5 font-weight-bold">LOCATIONS</h1>
                 </div>
             </div>
             <div class="container py-3">
                 <h1 class="display-4 text-center font-weight-bold my-5">RESTAURANTS</h1>
                 <div class="row">
-                    <div class="col-3">
-                        <div id="location_cards" class="card shadow mb-3">
+                    <div class="col-lg-3 col-md-6">
+                        <div id="location_cards" class="card shadow mb-4">
                             <div class="card-body text-center">
-                                <h4 class="card-title mb-4">ATLANTA</h4>
+                                <h4 id="location_card_headings" class="card-title text-primary mb-4">ATLANTA</h4>
                                 <p class="card-text">1126 Coding Dojo Way</p>
                                 <p class="card-text mb-4">Atlanta, GA 13572</p>
                                 <p class="card-text">(123) 456-7890</p>
@@ -61,10 +61,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-3">
-                        <div id="location_cards" class="card shadow mb-3">
+                    <div class="col-lg-3 col-md-6">
+                        <div id="location_cards" class="card shadow mb-4">
                             <div class="card-body text-center">
-                                <h4 class="card-title mb-4">DALLAS</h4>
+                                <h4 id="location_card_headings" class="card-title text-primary mb-4">DALLAS</h4>
                                 <p class="card-text">1126 Coding Dojo Way</p>
                                 <p class="card-text mb-4">Dallas, TX 13572</p>
                                 <p class="card-text">(123) 456-7890</p>
@@ -75,10 +75,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-3">
-                        <div id="location_cards" class="shadow card mb-3">
+                    <div class="col-lg-3 col-md-6">
+                        <div id="location_cards" class="shadow card mb-4">
                             <div class="card-body text-center">
-                                <h4 class="card-title mb-4">SEATTLE</h4>
+                                <h4 id="location_card_headings" class="card-title text-primary mb-4">SEATTLE</h4>
                                 <p class="card-text">1126 Coding Dojo Way</p>
                                 <p class="card-text mb-4">Seattle, WA 13572</p>
                                 <p class="card-text">(123) 456-7890</p>
@@ -89,10 +89,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-3">
-                        <div id="location_cards" class="shadow card mb-3">
+                    <div class="col-lg-3 col-md-6">
+                        <div id="location_cards" class="shadow card mb-4">
                             <div class="card-body text-center">
-                                <h4 class="card-title mb-4">PITTSBURGH</h4>
+                                <h4 id="location_card_headings" class="card-title text-primary mb-4">PITTSBURGH</h4>
                                 <p class="card-text">1126 Coding Dojo Way</p>
                                 <p class="card-text mb-4">Pittsburgh, PA 13572</p>
                                 <p class="card-text">(123) 456-7890</p>
@@ -111,7 +111,7 @@
             </div>
             <div class="container my-5">
                 <div class="row">
-                    <div class="col-6">
+                    <div class="col-lg-6">
                         <div class="container border rounded p-5 shadow mb-5">
                             <form>
                                 <div class="row">
@@ -141,11 +141,11 @@
                                     <textarea id="specialNotes" rows="3" class="form-control"></textarea>
                                     <small class="text-muted">We appreciate your feedback!</small>
                                 </div>
-                                <button class="btn btn-primary btn-block btn-lg shadow-lg my-3">Sign In</button>
+                                <button class="btn btn-primary btn-block btn-lg shadow-lg my-3">SEND</button>
                             </form>
                         </div>
                     </div>
-                    <div class="text-center col-6">
+                    <div class="text-center col-lg-6">
                         <h4 class="text-bold mt-5 mb-3">
                             MANAGEMENT OFFICE
                         </h4>
@@ -161,40 +161,53 @@
             </div>
             <div id="footer" class="p-5">
                 <div class="container">
-                    <div class="container d-flex">
+                    <div class="row text-center">
+                        <div class="col d-sm-none">
+                            <h2 class="text-white mb-3">LOCATIONS</h2>
+                        </div>
+                    </div>
+                    <div class="row text-center">
+                        <div class="col d-sm-none mb-3">
+                            <i class="ml-auto text-white fa-2x fab fa-instagram"></i>
+                            <i class="ml-3 text-white fa-2x fab fa-facebook-square"></i>
+                            <i class="ml-3 text-white fa-2x fab fa-twitter-square"></i>
+                            <i class="ml-3 text-white fa-2x fab fa-yelp"></i>
+                        </div>
+                    </div>
+                    <div class="container d-none d-sm-flex">
                         <h2 class="text-white mb-5">LOCATIONS</h2>
                         <i class="ml-auto text-white fa-2x fab fa-instagram"></i>
                         <i class="ml-3 text-white fa-2x fab fa-facebook-square"></i>
                         <i class="ml-3 text-white fa-2x fab fa-twitter-square"></i>
                         <i class="ml-3 text-white fa-2x fab fa-yelp"></i>
                     </div>
-                    <div class="row my-2 border rounded p-5 shadow">
-                        <div class="col-3 text-white text-center">
+                    <div class="row my-2 border rounded pt-5 shadow">
+                        <div class="col-sm-6 col-lg-3 text-white text-center mb-5">
                             <h4 class="mb-3">ATLANTA</h4>
                             <p>1126 Coding Dojo Way</p>
                             <p>Atlanta, GA 13572</p>
                             <p>(123) 456-7890</p>
                             <p>Mon-Sun 10 AM - 10PM</p>
                         </div>
-                        <div class="col-3 text-white text-center">
+                        <div class="col-sm-6 col-lg-3 text-white text-center mb-5">
                             <h4 class="mb-3">DALLAS</h4>
                             <p>1126 Coding Dojo Way</p>
                             <p>Dallas, TX 13572</p>
                             <p>(123) 456-7890</p>
                             <p>Mon-Sun 10 AM - 10PM</p>
                         </div>
-                        <div class="col-3 text-white text-center">
+                        <div class="col-sm-6 col-lg-3 text-white text-center mb-5">
                             <h4 class="mb-3">SEATTLE</h4>
                             <p>1126 Coding Dojo Way</p>
                             <p>Seattle, WA 13572</p>
                             <p>(123) 456-7890</p>
                             <p>Mon-Sun 10 AM - 10PM</p>
                         </div>
-                        <div class="col-3 text-white text-center">
+                        <div class="col-sm-6 col-lg-3 text-white text-center mb-5">
                             <h4 class="mb-3">PITTSBURGH</h4>
                             <p>1126 Coding Dojo Way</p>
                             <p>Pittsburgh, PA 13572</p>
-                            <p>123) 456-7890</p>
+                            <p>(123) 456-7890</p>
                             <p>Mon-Sun 10 AM - 10PM</p>
                         </div>
                     </div>
