@@ -1,7 +1,14 @@
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
     "python.pythonPath": "C:\\Users\\joshm\\AppData\\Local\\Programs\\Python\\Python38-32\\python.exe"
 =======
     "python.pythonPath": "J:\\Documents\\coding-dojo-python\\python-stack\\my-environments\\djangoPy3Env\\Scripts\\python.exe"
 >>>>>>> joshBranch
+=======
+    "python.pythonPath": "/usr/bin/python",
+    "python.linting.pylintEnabled": false,
+    "python.linting.mypyEnabled": true,
+    "python.linting.enabled": true
+>>>>>>> 1284e93b7e551be6fd546c1b35630af11220c0aa
 }
