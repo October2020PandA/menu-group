@@ -1,11 +1,11 @@
 //custom styles
 
-//homepage
+//all pages
 
 body{
     font-family: "Questrial", sans-serif;
     background: linear-gradient(#edecec, white); 
-    #subheading, .nav-item, h2{
+    #subheading, .nav-item, h2, #location_card_headings, #homepage_card_headings, #reservations_card_headings{
         font-family: "Merriweather", sans-serif;
     }
 }
@@ -30,18 +30,34 @@ body{
     }
 }
 
+#footer{
+    background: linear-gradient(#333b3f, #131a20);
+}
+
+//homepage
+
 #home_page_showcase{
     background: url("../images/burger.jpg") bottom center / cover;
     min-height: 720px;
     position: relative;
 }
 
+#home_page_card_1, #home_page_card_2, #home_page_card_3{
+    .card-img-top{
+        height: 350px;
+    }
+}
 
-#showcase{
+//menu page
+
+#menu_showcase{
     background: url("../images/burger.jpg") bottom center / cover;
     min-height: 600px;
     position: relative;
 }
+
+
+//reservations page
 
 #reservations_showcase{
     background: url("../images/settable.jpg") bottom center / cover;
@@ -63,6 +79,14 @@ body{
     }
 }
 
+#reservation_cards{
+    .card-img{
+        height: 250px;
+    }
+}
+
+//locations page
+
 #locations_showcase{
     background: url("../images/bar.jpg") bottom center / cover;
     min-height: 600px;
@@ -83,21 +107,30 @@ body{
     }
 }
 
-#footer{
-    background: linear-gradient(#333b3f, #131a20);
-}
 
-
-//reservations page
-
-#reservation_cards{
-    .card-img{
-        height: 250px;
-    }
-}
 
 
 //media queries
+
+@media(max-width: 992px) and (min-width:768px){
+    #home_page_card_1, #home_page_card_2, #home_page_card_3{
+        margin: 0 30px;
+    }
+}
+
+@media(max-width: 768px){
+    #reservations_heading, #locations_heading{
+        font-size: 4rem;
+    }
+    #booking_info{
+        font-size: 2rem;
+    }
+}
+@media(max-width:1200px) and (min-width: 992px){
+    #home_page_card_1{
+        max-height: 650px;
+    }
+}
 
 @media(max-width: 768px){
     .navbar{
@@ -109,7 +142,11 @@ body{
 
 
 
-
+@media(max-width: 576px){
+    #location_cards{
+        margin: 15px;
+    }
+}
 
 // how to call these fonts: 
 // font-family: 'Merriweather', serif;
