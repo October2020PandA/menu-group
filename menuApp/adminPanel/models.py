@@ -1,6 +1,23 @@
 from django.db import models
 
 # Create your models here.
+class LocationManager(models.Manager):
+    def location_validator(self, postData):
+        errors = {}
+        if len(postData['location_name']) < 4:
+            errors['location_name'] = 'Please include a location name for the website display'
+        if len(postData['address-1']) < 5:
+            errors['address-1'] = 'Please include the address so customers can find your restaurant'
+        if len(postData['phone_num']) < 7:
+            errors['phone_num'] = 'Please include the phone number so customers can contact the restaurant'
+        if len(postData['city']) < 3:
+            errors['city'] = 'Please include the city where your restaurant is located'
+        if len(postData['state_province']) < 1:
+            errors['state_province'] = 'Please include the state/province where your restaurant is located'
+        if len(postData['post_code']) < 2:
+            errors['post_code'] = 'Please include the postal code where your restaurant is located'
+        return errors
+
 class Location(models.Model):
     location_name = models.CharField(max_length=255)
     address1 = models.CharField(max_length=255)
@@ -8,9 +25,18 @@ class Location(models.Model):
     city = models.CharField(max_length=255)
     state = models.CharField(max_length=100)   
     county = models.CharField(max_length=100, blank=True)
-    country = models.CharField(max_length=3, blank=True)
+    country = models.CharField(max_length=255, blank=True)
     phone = models.CharField(max_length=50, blank=True)
     is_restaurant = models.BooleanField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    objects = LocationManager()
+
+class LocationHour(models.Model):
+    day_of_week = models.CharField(max_length=10)
+    open_time = models.TimeField(blank=True, null=True)
+    close_time = models.TimeField(blank=True, null=True)
+    location = models.ForeignKey(Location, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
