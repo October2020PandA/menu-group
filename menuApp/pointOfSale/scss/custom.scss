@@ -1,4 +1,36 @@
 //custom styles
-#navbar-heading{
-    margin-left: 200px;
+
+//main POS page
+
+.navbar{
+    .nav-link:hover{
+        border-bottom: none;
+    }
+}
+
+.card-img-top{
+    height: 175px;
+}
+
+#item_cards{
+    text-decoration: none;
+}
+
+//POS Modal
+
+#qty_field{
+    width: 30px;
+    text-align: center;
+}
+
+input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-outer-spin-button {
+    display: none;
+}
+
+//media queries
+
+@media(max-width: 576px){
+    .card-img-top{
+        height: 250px;
+    }
 }
