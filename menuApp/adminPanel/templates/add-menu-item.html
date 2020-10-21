@@ -9,32 +9,38 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     </head>
     <body>
-        <!-- PLACE HOLDER - NAV BAR -->
-
+         <!--ERROR MESSAGE-->
+         {% if messages %}
+         <ul class="messages">
+             {% for message in messages %}
+                 <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+             {% endfor %}
+         </ul>
+        {% endif %}
         <div class="container">
             <div class="card mx-auto mt-3">
+                <!-- FORM - ADD MENU ITEM -->
                 <h5 class="card-header">Add Menu Item</h5>
                 <div class="card-body">
                 <form action="all-menu-items" method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
                     <div class="row">
                         <div class="col-lg">
-                            <!-- FORM - ADD MENU ITEM -->
                             <div class="form-group">
                                 <label for="item_name">Item Name</label>
-                                <input type="text" class="form-control" id="item_name" name="item_name">
+                                <input type="text" class="form-control" id="item_name" name="item_name" placeholder="Fish Tacos">
                             </div>
                             </div>
                             <div class="col-lg">
                                 <div class="form-group">
                                     <label for="item_desc">Item Description</label>
-                                    <input type="text" class="form-control" id="item_desc" name="item_desc">
+                                    <input type="text" class="form-control" id="item_desc" name="item_desc" placeholder="Fresh grilled fish with mango salsa...">
                                 </div>
                             </div>
                             <div class="col-lg">
                                 <div class="form-group">
                                     <label for="item_price">Price</label>
-                                    <input type="text" class="form-control" id="item_price" name="item_price">
+                                    <input type="text" class="form-control" id="item_price" name="item_price" placeholder="$10.00" required>
                                 </div>
                             </div>
                         </div>
@@ -42,13 +48,13 @@
                             <div class="col-md">
                                 <div class="form-group">
                                     <label for="min_calories">Min Calories</label>
-                                    <input type="text" class="form-control" id="min_calories" name="min_calories">
+                                    <input type="text" class="form-control" id="min_calories" name="min_calories" placeholder="250" required>
                                 </div>  
                             </div>
                             <div class="col-md">
                                 <div class="form-group">
                                     <label for="max_calories">Max Calories</label>
-                                    <input type="text" class="form-control" id="max_calories" name="max_calories">
+                                    <input type="text" class="form-control" id="max_calories" name="max_calories" placeholder="270" required>
                                 </div>
                             </div>
                         </div>
@@ -56,7 +62,7 @@
                             <div class="col-md">
                                 <div class="form-group">
                                     <label for="dietary">Dietary Restrictions</label>
-                                    <input type="text" class="form-control" id="dietary" name="dietary">
+                                    <input type="text" class="form-control" id="dietary" name="dietary" placeholder="Glutten Free">
                                 </div>
                                 <!-- <div class="form-group">
                                     <label for="category">Category</label>

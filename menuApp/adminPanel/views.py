@@ -20,6 +20,11 @@ def index(request):
 ## Add Menu Item
 def add_item(request): 
     if request.method == ("POST" or "FILES"):
+        errors = Item.objects.item_validator(request.POST)
+        if len(errors) != 0:
+            for key, value in errors.items():
+                messages.error(request, value)
+            return redirect('/add-menu-item')
         Item.objects.create(
             item_name=request.POST['item_name'], 
             item_desc=request.POST['item_desc'], 

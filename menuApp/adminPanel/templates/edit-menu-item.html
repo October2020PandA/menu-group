@@ -13,6 +13,14 @@
             <div class="card mx-auto mt-3">
                 <h5 class="card-header">Edit {{ item.item_name}}</h5>
                 <div class="card-body">
+                    <!--ERROR MESSAGE-->
+                    {% if messages %}
+                    <ul class="messages">
+                        {% for message in messages %}
+                            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
                     <!-- FORM - ADD MENU ITEM -->    
                     <form action="/update/{{ item.id }}" method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
