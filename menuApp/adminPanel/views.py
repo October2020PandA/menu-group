@@ -13,18 +13,23 @@ def index(request):
         # 'subcategories': SubCategory.objects.all(),
 
     }
-    return render(request, 'add-menu-item.html', context)
+    return render(request, 'all-menu-items.html', context)
 
 ## ---------- CRUD MENU ITEMS ---------- ##
 
 ## Add Menu Item
 def add_item(request): 
     if request.method == ("POST" or "FILES"):
+        errors = Item.objects.item_validator(request.POST)
+        if len(errors) != 0:
+            for key, value in errors.items():
+                messages.error(request, value)
+            return redirect('/add-menu-item')
         Item.objects.create(
             item_name=request.POST['item_name'], 
             item_desc=request.POST['item_desc'], 
             item_price=request.POST['item_price'], 
-            item_image=request.FILES['item_image'], 
+            item_image=request.FILES['item_image', None], 
             min_calories=request.POST['min_calories'],
             max_calories=request.POST['max_calories'],
             # dietary=request.POST['dietary'],
@@ -32,55 +37,43 @@ def add_item(request):
             # item_category=Category.objects.get(id=request.session['id']),
             # item_subcategory=SubCategory.objects.get(id=request.session['id']),
             # locations=Location.objects.get(id=request.session['id']),
-        ) 
-    # print(request.POST)   
-    return redirect('/')
-    # else: 
-    #     pass
-    #     return render(request, 'index.html')
+        )  
+    return render(request, 'add-menu-item.html')
 
-## Fake data to get category and subcategory to 
-def fakeData(request):
-    Category.objects.create(category_name="Drinks")
-    cate = Category.objects.get(category_name="Drinks")
-    SubCategory.objects.create(subcategory_name="Bar", category=cate)
-    SubCategory.objects.create(subcategory_name="Soda", category=cate)
-    SubCategory.objects.create(subcategory_name="Wine", category=cate)
-    return HttpResponse('Fake Data Added')
 
 ## Edit Menu Item 
-# def edit(request, id):
-    # context = {
-    #     'item': Items.objects.get(id=id)
-    # }
-    # return render(request, 'edit-menu-item.html', context)
+def edit(request, id):
+    context = {
+        'item': Items.objects.get(id=id)
+    }
+    return render(request, 'edit-menu-item.html', context)
 
 
 ## Update Menu Items (after editing)
-# def update(request, id):
-#     if request.method == 'POST': 
-#         update_item = Item.objects.filter(id=id)
-#         if len(update_item) != 1:
-#             return redirect('/') ## NEEDS TO BE UPDATED -- redirect to menu dashbaord
-#         update_item[0].item_name = request.POST['item_name']
-#         update_item[0].item_desc = request.POST['item_desc']
-#         update_item[0].item_price = request.POST['item_price']
-#         update_item[0].item_image = request.POST['item_image'] ##need to review, may need to be request.FILE 
-#         update_item[0].min_calories = request.POST['min_calories']
-#         update_item[0].max_calories = request.POST['max_calories']
-#         update_item[0].dietary = request.POST['dietary']
-#         update_item[0].is_available = request.POST['is_available']
-#         update_item[0].category = request.POST['category']
-#         update_item[0].subcategory = request.POST['subcategory']
-#         update_item[0].save()
-#     return redirect('/') ## NEEDS TO BE UPDATED -- redirect to menu dashbaord
+def update(request, id):
+    if request.method == 'POST': 
+        update_item = Item.objects.filter(id=id)
+        if len(update_item) != 1:
+            return redirect('all-menu-items.html')
+        update_item[0].item_name = request.POST['item_name']
+        update_item[0].item_desc = request.POST['item_desc']
+        update_item[0].item_price = request.POST['item_price']
+        update_item[0].item_image = request.POST['item_image'] ##need to review, may need to be request.FILE 
+        update_item[0].min_calories = request.POST['min_calories']
+        update_item[0].max_calories = request.POST['max_calories']
+        update_item[0].dietary = request.POST['dietary']
+        update_item[0].is_available = request.POST['is_available']
+        update_item[0].category = request.POST['category']
+        update_item[0].subcategory = request.POST['subcategory']
+        update_item[0].save()
+    return redirect('all-menu-items.html')
 
 ## Delete Menu Items 
 # def destroy(request, id):
 #     Item.objects.get(id=id).delete()
-#     return redirect('/') ## NEEDS TO BE UPDATED -- redirect to menu dashbaord
+#     return redirect('all-menu-items.html')
 
-## View Menu (all items)
+## View Menu (all menu items)
 def view_items(request):
     context = {
         "all_items": Item.objects.all()
@@ -90,7 +83,6 @@ def view_items(request):
 
 ## ---------- UPLOAD IMAGE ---------- ##
 
-# Upload Image 
 def upload(request):
     context = {}
     if request.method == 'POST':
@@ -102,3 +94,15 @@ def upload(request):
 
     # UPDATE HTML LOCATION
     return render(request,'menu-dashbord.html', context) #location for this image 
+
+
+## ---------- FAKE DATA ---------- ##
+
+## Fake data to get category and subcategory to work
+def fakeData(request):
+    Category.objects.create(category_name="Drinks")
+    cate = Category.objects.get(category_name="Drinks")
+    SubCategory.objects.create(subcategory_name="Bar", category=cate)
+    SubCategory.objects.create(subcategory_name="Soda", category=cate)
+    SubCategory.objects.create(subcategory_name="Wine", category=cate)
+    return HttpResponse('Fake Data Added')

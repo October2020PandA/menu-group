@@ -21,6 +21,18 @@ class LocationManager(models.Manager):
             errors['post_code'] = 'Please include the postal code where your restaurant is located'
         return errors
 
+class ItemManager(models.Manager):
+    def item_validator(self, postData):
+        errors = {}
+        if len(postData['item_name']) == 0:
+            errors['item_name'] = "Item title name is required." 
+        elif len(postData['item_name']) < 3:
+            errors['item_name'] = "Item title must be at least 3 charcters long."
+        if len(postData['item_desc']) == 0:
+            errors['item_desc'] = "Item description is required." 
+        elif len(postData['item_desc']) < 5:
+            errors['item_desc'] = "Item description must be at least 5 charcters long."
+        
 class Location(models.Model):
     location_name = models.CharField(max_length=255)
     address1 = models.CharField(max_length=255)
@@ -69,6 +81,7 @@ class Item(models.Model):
     locations = models.ManyToManyField(Location, related_name='item_location', related_query_name='items')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    objects = ItemManager()
 
 class ItemOption(models.Model):
     option_discount = models.DecimalField(max_digits=7, decimal_places=3)
