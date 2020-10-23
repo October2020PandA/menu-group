@@ -16,5 +16,5 @@ urlpatterns = [
     path('employee', views.employee, name='employee'),
     path('logout', views.logout, name='logout'),
     path('reset', views.clearDb, name='clearDb'),
-    # path('add-category', views.fakeData, name='fakeData'),
+    path('populate-data', views.fakeData, name='fakeData'),
 ]
