@@ -7661,7 +7661,7 @@ body {
   min-height: 720px;
   position: relative; }
 
-#home_page_card_1 .card-img-top, #home_page_card_2 .card-img-top, #home_page_card_3 .card-img-top {
+#home_page_cards .card-img-top {
   height: 350px; }
 
 #menu_showcase {
