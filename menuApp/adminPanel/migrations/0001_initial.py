@@ -62,7 +62,11 @@ class Migration(migrations.Migration):
                 ('subcategory_name', models.CharField(max_length=255)),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
                 ('updated_at', models.DateTimeField(auto_now=True)),
+<<<<<<< HEAD
                 ('category', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='subcategories', related_query_name='subcategories', to='adminPanel.Category')),
+=======
+                ('category', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='subcategories', related_query_name='subcategories', to='adminPanel.category')),
+>>>>>>> origin/Andrieu
             ],
         ),
         migrations.CreateModel(
