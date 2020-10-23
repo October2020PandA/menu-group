@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'logreg',
     'menuDisplay',
     'onlineOrder',
+    'pointOfSale', 
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
