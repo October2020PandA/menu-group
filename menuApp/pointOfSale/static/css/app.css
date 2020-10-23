@@ -7634,6 +7634,9 @@ a.text-dark:hover, a.text-dark:focus {
 .navbar .nav-link:hover {
   border-bottom: none; }
 
+#category_buttons_container {
+  margin-top: 15px; }
+
 .card-img-top {
   height: 175px; }
 

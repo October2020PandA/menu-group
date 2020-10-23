@@ -108,8 +108,6 @@ body{
 }
 
 
-
-
 //media queries
 
 @media(max-width: 992px) and (min-width:768px){
@@ -140,14 +138,8 @@ body{
     }
 }
 
-
-
 @media(max-width: 576px){
     #location_cards{
         margin: 15px;
     }
 }
-
-// how to call these fonts: 
-// font-family: 'Merriweather', serif;
-// font-family: 'Montserrat', sans-serif;
