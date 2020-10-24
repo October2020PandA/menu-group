@@ -57,11 +57,13 @@
                       <p>1x food item   price</p>
                       <p>1x food item   price</p>
                       <p>1x food item   price</p>
-                      <p>Total:</p>
-                      <p>Tax:</p>
-                      <p>Tip:</p>
-                      <p>Grand Total:</p>
-                      <a class="btn btn-danger" href="/order-online/checkout">Pay Now</a>
+                      <div style="text-align: right; margin-top: 100px;">
+                        <p>Total</p>
+                        <p>Tax</p>
+                        <p>Tip</p>
+                        <p>Grand Total</p>
+                      </div>
+                      <a class="btn btn-danger" href="/order-online/checkout" style="width: 270px;">Pay Now</a>
                     </div>
                   </div>
               </div>
@@ -146,14 +148,7 @@
           </div>
         </div>
       </main>
-      <p>Items</p>
       {% for item in items %}
-        <p>{{item.item_name}}</p>
+      {{item.item_name}}
       {% endfor %}
-      <p>Location</p>
-      <p>Category</p>
-      {% for category in categories%}
-      <p>{{category.category_name}}</p>
-      {%endfor%}
-</body>
 </html>
