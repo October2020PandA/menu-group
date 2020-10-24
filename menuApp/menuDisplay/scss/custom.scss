@@ -5,7 +5,7 @@
 body{
     font-family: "Questrial", sans-serif;
     background: linear-gradient(#edecec, white); 
-    #subheading, .nav-item, h2, #location_card_headings, #homepage_card_headings, #reservations_card_headings{
+    #subheading, .nav-item, h2{
         font-family: "Merriweather", sans-serif;
     }
 }
@@ -40,6 +40,10 @@ body{
     background: url("../images/burger.jpg") bottom center / cover;
     min-height: 720px;
     position: relative;
+}
+
+#homepage_card_headings{
+    font-family: "Merriweather", sans-serif;
 }
 
 #home_page_cards{
@@ -79,6 +83,14 @@ body{
     }
 }
 
+#reservation_location_headings{
+    font-family: "Merriweather", sans-serif;
+}
+
+#reservations_card_headings{
+    font-family: "Merriweather", sans-serif;
+}
+
 #reservation_cards{
     .card-img{
         height: 250px;
@@ -107,6 +119,9 @@ body{
     }
 }
 
+#location_card_headings{
+    font-family: "Merriweather", sans-serif;
+}
 
 //media queries
 
