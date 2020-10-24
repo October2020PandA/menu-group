@@ -7634,7 +7634,7 @@ a.text-dark:hover, a.text-dark:focus {
 body {
   font-family: "Questrial", sans-serif;
   background: linear-gradient(#edecec, white); }
-  body #subheading, body .nav-item, body h2 {
+  body #subheading, body .nav-item, body h2, body #location_card_headings, body #homepage_card_headings, body #reservations_card_headings {
     font-family: "Merriweather", sans-serif; }
 
 .navbar {
@@ -7653,12 +7653,18 @@ body {
     transition: border 0.2s;
     border-bottom: 1px solid white; }
 
+#footer {
+  background: linear-gradient(#333b3f, #131a20); }
+
 #home_page_showcase {
   background: url("../images/burger.jpg") bottom center/cover;
   min-height: 720px;
   position: relative; }
 
-#showcase {
+#home_page_cards .card-img-top {
+  height: 350px; }
+
+#menu_showcase {
   background: url("../images/burger.jpg") bottom center/cover;
   min-height: 600px;
   position: relative; }
@@ -7678,6 +7684,9 @@ body {
     height: 100%;
     z-index: 1; }
 
+#reservation_cards .card-img {
+  height: 250px; }
+
 #locations_showcase {
   background: url("../images/bar.jpg") bottom center/cover;
   min-height: 600px;
@@ -7693,14 +7702,23 @@ body {
     height: 100%;
     z-index: 1; }
 
-#footer {
-  background: linear-gradient(#333b3f, #131a20); }
+@media (max-width: 992px) and (min-width: 768px) {
+  #home_page_card_1, #home_page_card_2, #home_page_card_3 {
+    margin: 0 30px; } }
+@media (max-width: 768px) {
+  #reservations_heading, #locations_heading {
+    font-size: 4rem; }
 
-#reservation_cards .card-img {
-  height: 250px; }
-
+  #booking_info {
+    font-size: 2rem; } }
+@media (max-width: 1200px) and (min-width: 992px) {
+  #home_page_card_1 {
+    max-height: 650px; } }
 @media (max-width: 768px) {
   .navbar .nav-link:hover {
     border-bottom: none; } }
+@media (max-width: 576px) {
+  #location_cards {
+    margin: 15px; } }
 
 /*# sourceMappingURL=app.css.map */

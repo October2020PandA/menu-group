@@ -12,8 +12,8 @@ class OrderType(models.Model):
 class Order(models.Model):
     order_name = models.CharField(max_length=255)
     order_discount = models.DecimalField(max_digits=7, decimal_places=3)
-    order_type = models.ForeignKey(Order, related_query='orders', related_query_name='orders', on_delete=models.CASCADE)
-    location = models.ForeignKey(Location, related_query='orders', related_query_name='orders', on_delete=models.CASCADE)
+    order_type = models.ForeignKey(OrderType, related_name='orders', related_query_name='orders', on_delete=models.CASCADE)
+    location = models.ForeignKey(Location, related_name='orders', related_query_name='orders', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

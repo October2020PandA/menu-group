@@ -28,14 +28,14 @@ class Migration(migrations.Migration):
                 ('item_name', models.CharField(max_length=255)),
                 ('item_desc', models.TextField()),
                 ('item_price', models.DecimalField(decimal_places=3, max_digits=7)),
-                ('item_image', models.CharField(blank=True, max_length=255)),
+                ('item_image', models.ImageField(blank=True, null=True, upload_to='images/')),
                 ('min_calories', models.IntegerField()),
                 ('max_calories', models.IntegerField()),
                 ('dietary', models.TextField(blank=True)),
                 ('is_available', models.BooleanField()),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
                 ('updated_at', models.DateTimeField(auto_now=True)),
-                ('category', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='items', related_query_name='items', to='adminPanel.category')),
+                ('category', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='items', related_query_name='items', to='adminPanel.Category')),
             ],
         ),
         migrations.CreateModel(
@@ -62,7 +62,7 @@ class Migration(migrations.Migration):
                 ('subcategory_name', models.CharField(max_length=255)),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
                 ('updated_at', models.DateTimeField(auto_now=True)),
-                ('category', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='subcategories', related_query_name='subcategories', to='adminPanel.category')),
+                ('category', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='subcategories', related_query_name='subcategories', to='adminPanel.Category')),
             ],
         ),
         migrations.CreateModel(
@@ -72,8 +72,8 @@ class Migration(migrations.Migration):
                 ('option_discount', models.DecimalField(decimal_places=3, max_digits=7)),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
                 ('updated_at', models.DateTimeField(auto_now=True)),
-                ('item', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='options', related_query_name='options', to='adminPanel.item')),
-                ('option', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='itemOptions', related_query_name='itemOptions', to='adminPanel.item')),
+                ('item', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='options', related_query_name='options', to='adminPanel.Item')),
+                ('option', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='itemOptions', related_query_name='itemOptions', to='adminPanel.Item')),
             ],
         ),
         migrations.AddField(
@@ -84,6 +84,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='item',
             name='subcategory',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='items', related_query_name='items', to='adminPanel.subcategory'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='items', related_query_name='items', to='adminPanel.SubCategory'),
         ),
     ]

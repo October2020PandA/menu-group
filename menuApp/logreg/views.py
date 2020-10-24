@@ -3,8 +3,9 @@ from django.contrib import messages
 from django.views.generic import View
 from django.views.decorators.http import require_http_methods
 from .decorators import my_user_passes_test, my_login_required
-from .models import User, Group
-from adminPanel.models import Location, LocationHour, Item, Category, SubCategory
+from logreg.models import User, Group, Permission
+from adminPanel.models import Location, LocationHour, Item, ItemOption, Category, SubCategory, ItemOption
+from pointOfSale.models import Order, OrderType, OrderHistory, Bill
 from datetime import datetime
 import bcrypt
 

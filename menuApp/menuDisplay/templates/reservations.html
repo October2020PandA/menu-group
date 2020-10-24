@@ -41,7 +41,7 @@
             <div id="reservations_showcase" class="d-flex justify-content-center align-items-center">
                 <div id="overlay"></div>
                 <div id="header" class= "container text-center text-white">
-                    <h1 class="display-2 mt-5 font-weight-bold">RESERVATIONS</h1>
+                    <h1 id="reservations_heading" class="display-2 mt-5 font-weight-bold">RESERVATIONS</h1>
                 </div>
             </div>
             <div class="container p-5">
@@ -54,82 +54,96 @@
                   <h1 class="display-4 text-center my-5">EVENT BOOKING</h1>
                 </div>
                 <div class="row mt-5">
-                    <div class="card mb-4">
+                    <div class="card mb-5">
                         <div class="row no-gutters" id="reservation_cards">
                           <div class="col-md-4">
                             <img src="../static/images/catering.jpg" class="card-img" alt="tacos_image">
                           </div>
                           <div class="col-md-8">
                             <div class="card-body">
-                              <h5 class="card-title font-weight-bold">CATERING</h5>
+                              <h4 id="reservations_card_headings" class="card-title font-weight-bold text-primary mb-3">CATERING</h4>
                               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque, nihil. In 
                                 fuga incidunt itaque assumenda, at ullam et ea, fugiat nobis ut soluta deleniti 
                                 dolor.</p>
-                              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                              <a href="#booking_info" class="card-text"><p class="text-muted">BOOK NOW <i class="fas fa-caret-square-right"></i></p></a>
                             </div>
                           </div>
                         </div>
                     </div>
-                    <div class="card mb-4">
+                    <div class="card mb-5">
                         <div class="row no-gutters" id="reservation_cards">
                           <div class="col-md-4">
                             <img src="../static/images/privateevents.jpg" class="card-img" alt="tacos_image">
                           </div>
                           <div class="col-md-8">
                             <div class="card-body">
-                              <h5 class="card-title font-weight-bold">PRIVATE EVENTS</h5>
+                              <h4 id="reservations_card_headings" class="card-title font-weight-bold text-primary mb-3">PRIVATE EVENTS</h4>
                               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque, nihil. In 
                                 fuga incidunt itaque assumenda, at ullam et ea, fugiat nobis ut soluta deleniti 
                                 dolor.</p>
-                              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                              <a href="#booking_info" class="card-text"><p class="text-muted">BOOK NOW <i class="fas fa-caret-square-right"></i></p></a>
                             </div>
                           </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="container p-5">
-              <h1 class="text-center font-weight-bold mb-5 mt-3">FOR EVENT BOOKING, CALL (555) 555-5555 OR EMAIL MELISSA@MELISSA.COM</h1>
+            <div class="container pb-5">
+              <h1 id="booking_info" class="text-center font-weight-bold mb-5 mt-3">FOR EVENT BOOKING, CALL (555) 555-5555 OR EMAIL MELISSA@MELISSA.COM</h1>
             </div>
-          <div id="footer" class="p-5">
-              <div class="container">
-                  <div class="container d-flex">
-                      <h2 class="text-white mb-5">LOCATIONS</h2>
-                      <i class="ml-auto text-white fa-2x fab fa-instagram"></i>
-                      <i class="ml-3 text-white fa-2x fab fa-facebook-square"></i>
-                      <i class="ml-3 text-white fa-2x fab fa-twitter-square"></i>
-                      <i class="ml-3 text-white fa-2x fab fa-yelp"></i>
-                  </div>
-                  <div class="row my-2 border rounded p-5 shadow">
-                      <div class="col-3 text-white text-center">
-                          <h4 class="mb-3">ATLANTA</h4>
-                          <p>1126 Coding Dojo Way</p>
-                          <p>Atlanta, GA 13572</p>
-                          <p>(123) 456-7890</p>
-                          <p>Mon-Sun 10 AM - 10PM</p>
-                      </div>
-                      <div class="col-3 text-white text-center">
-                          <h4 class="mb-3">DALLAS</h4>
-                          <p>1126 Coding Dojo Way</p>
-                          <p>Dallas, TX 13572</p>
-                          <p>(123) 456-7890</p>
-                          <p>Mon-Sun 10 AM - 10PM</p>
-                      </div>
-                      <div class="col-3 text-white text-center">
-                          <h4 class="mb-3">SEATTLE</h4>
-                          <p>1126 Coding Dojo Way</p>
-                          <p>Seattle, WA 13572</p>
-                          <p>(123) 456-7890</p>
-                          <p>Mon-Sun 10 AM - 10PM</p>
-                      </div>
-                      <div class="col-3 text-white text-center">
-                          <h4 class="mb-3">PITTSBURGH</h4>
-                          <p>1126 Coding Dojo Way</p>
-                          <p>Pittsburgh, PA 13572</p>
-                          <p>(123) 456-7890</p>
-                          <p>Mon-Sun 10 AM - 10PM</p>
-                      </div>
-                  </div>
-              </div>
+            <div id="footer" class="p-5">
+                <div class="container">
+                    <div class="row text-center">
+                        <div class="col d-sm-none">
+                            <h2 class="text-white mb-3">LOCATIONS</h2>
+                        </div>
+                    </div>
+                    <div class="row text-center">
+                        <div class="col d-sm-none mb-3">
+                            <i class="ml-auto text-white fa-2x fab fa-instagram"></i>
+                            <i class="ml-3 text-white fa-2x fab fa-facebook-square"></i>
+                            <i class="ml-3 text-white fa-2x fab fa-twitter-square"></i>
+                            <i class="ml-3 text-white fa-2x fab fa-yelp"></i>
+                        </div>
+                    </div>
+                    <div class="container d-none d-sm-flex">
+                        <h2 class="text-white mb-5">LOCATIONS</h2>
+                        <i class="ml-auto text-white fa-2x fab fa-instagram"></i>
+                        <i class="ml-3 text-white fa-2x fab fa-facebook-square"></i>
+                        <i class="ml-3 text-white fa-2x fab fa-twitter-square"></i>
+                        <i class="ml-3 text-white fa-2x fab fa-yelp"></i>
+                    </div>
+                    <div class="row my-2 border rounded pt-5 shadow">
+                        <div class="col-sm-6 col-lg-3 text-white text-center mb-5">
+                            <h4 class="mb-3">ATLANTA</h4>
+                            <p>1126 Coding Dojo Way</p>
+                            <p>Atlanta, GA 13572</p>
+                            <p>(123) 456-7890</p>
+                            <p>Mon-Sun 10 AM - 10PM</p>
+                        </div>
+                        <div class="col-sm-6 col-lg-3 text-white text-center mb-5">
+                            <h4 class="mb-3">DALLAS</h4>
+                            <p>1126 Coding Dojo Way</p>
+                            <p>Dallas, TX 13572</p>
+                            <p>(123) 456-7890</p>
+                            <p>Mon-Sun 10 AM - 10PM</p>
+                        </div>
+                        <div class="col-sm-6 col-lg-3 text-white text-center mb-5">
+                            <h4 class="mb-3">SEATTLE</h4>
+                            <p>1126 Coding Dojo Way</p>
+                            <p>Seattle, WA 13572</p>
+                            <p>(123) 456-7890</p>
+                            <p>Mon-Sun 10 AM - 10PM</p>
+                        </div>
+                        <div class="col-sm-6 col-lg-3 text-white text-center mb-5">
+                            <h4 class="mb-3">PITTSBURGH</h4>
+                            <p>1126 Coding Dojo Way</p>
+                            <p>Pittsburgh, PA 13572</p>
+                            <p>(123) 456-7890</p>
+                            <p>Mon-Sun 10 AM - 10PM</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </body>
     </html>
