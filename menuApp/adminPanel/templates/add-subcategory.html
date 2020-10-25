@@ -1,0 +1,27 @@
+
+<form action="" method="POST">
+    {% csrf_token %}
+    <div class="modal-header">
+        <h5 class="modal-title">Add SubCategory</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </div>
+    <div class="modal-body container-fluid category-form">
+        <h6>SubCategories</h6>
+        {% if subcategories %}
+            <ul>
+                {% for subcategory in subcategories %}
+                <li>{{ subcategory.subcategory_name }} (Category: {{subcategory.category.category_name}})</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <div class="form-group">
+            <label for="subcategory_name">New SubCategory Name</label>
+            <input type="text" class="form-control" name="subcategory_name" id="subcategory_name">
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">Add SubCategory</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+    </div>
+</form>

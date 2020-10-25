@@ -1,0 +1,17 @@
+
+            
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="{% if item.item_image %}{{ item.item_image.url }}{% endif %}" alt="">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ item.item_name }}</h5>
+                            <p class="card-text">{{ item.item_desc }} 
+                                <br>
+                                {% if item.min_calories == item.max_calories %}
+                                <i>({{ item.min_calories }})</i>
+                                {% else %}
+                                <i>({{ item.min_calories }} - {{ item.max_calories }} calories)</i>
+                                {% endif %}
+                                <br>
+                                ${{ item.item_price }}</p>
+                        </div>
+                    </div>
