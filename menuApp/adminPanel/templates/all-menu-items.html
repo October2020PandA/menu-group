@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>All Menu Items</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'main.css' %}">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    </head>
+    <body>
+
+        <!-- ADD TABLE (LIST) OF ALL MENU ITEMS HERE -->
+        <h3>All Courses</h3>
+            <table class="">
+                <thead>
+                    <th>Item Name</th>
+                    <th>Category</th>
+                    <th>Subcategory</th>
+                    <th>Availbile</th>
+                    <th>Edit Item</th>
+                </thead>
+                <tbody class=""></tbody>
+                    {% for item in items %}
+                    <tr>
+                        <td>{{ item.item_name }}</td>
+                        <td>{{ item.category}}</td>
+                        <td>{{ item.subcategory}}</td>
+                        <td>{{ item.is_available}}</td>
+                        <td>
+                            <a href="/menu-admin/edit-menu-item/{{item.id}}" class="badge badge-info">Edit</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <a href="/menu-admin/add-menu-item" class="badge badge-info">Add Menu Item</a>
+
+        <!-- ADD "ADD MENU ITEM" BOTTON TO PAGE -->
+
+    </body>
+</html>
