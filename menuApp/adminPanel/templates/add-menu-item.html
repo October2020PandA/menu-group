@@ -128,12 +128,10 @@
             </div>
         </div>
         <!-- JavaScript Infor for Bootstrap -->
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
         <script>
-            $("#category").on("click", function() {
+            $(".category-dynamic").on("click", "#category", function() {
                 $(".subcategory-dynamic").children().removeClass("invisible");
                 if ($(this).val() != null) {
                     cat_name = $(this).val();
@@ -151,7 +149,6 @@
             });
             $(".category-dynamic").on("click", ".add-new-category", function(e) {
                 e.preventDefault();
-                console.log("add new category");
                 $.ajax({
                     url: '/menu-admin/add-category',
                     method: 'get',
@@ -162,7 +159,6 @@
             });
             $(".subcategory-dynamic").on("click", ".add-new-subcategory", function(e) {
                 e.preventDefault();
-                console.log("add new subcategory");
                 $.ajax({
                     url: '/menu-admin/add-subcategory',
                     method: 'get',
@@ -170,6 +166,30 @@
                         $('.category-form').html(ServerResponse)
                     }
                 });
+            });
+            $(".category-form").on("submit", ".form-add-subcategory", function(e) {
+                e.preventDefault();
+                $.ajax({
+                    url: '/menu-admin/add-subcategory/create',
+                    method: 'post',
+                    data: $(this).serialize(),
+                    success: function(ServerResponse) {
+                        $('.subcategory-dynamic').html(ServerResponse)
+                    }
+                });
+                $('#categoryModal').modal('toggle');
+            });
+            $(".category-form").on("submit", ".form-add-category", function(e) {
+                e.preventDefault();
+                $.ajax({
+                    url: '/menu-admin/add-category/create',
+                    method: 'post',
+                    data: $(this).serialize(),
+                    success: function(ServerResponse) {
+                        $('.category-dynamic').html(ServerResponse)
+                    }
+                });
+                $('#categoryModal').modal('toggle');
             });
         </script>
     </body>

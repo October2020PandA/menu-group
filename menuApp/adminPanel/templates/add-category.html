@@ -1,5 +1,5 @@
 
-<form action="" method="POST">
+<form action="" method="POST" class="form-add-category">
     {% csrf_token %}
     <div class="modal-header">
         <h5 class="modal-title">Add Category</h5>
@@ -21,7 +21,7 @@
         </div>
     </div>
     <div class="modal-footer">
-        <button type="submit" class="btn btn-primary">Add Category</button>
+        <button type="submit" class="btn btn-primary submit-category">Add Category</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
     </div>
 </form>

@@ -17,5 +17,7 @@ urlpatterns = [
     path('grab-subcategory', views.view_subcategory, name="view_subcategory"),
     path('view-item/<int:item_id>', views.view_item, name="view_item"),
     path('add-category', views.add_category, name="add_category"),
+    path('add-category/create', views.create_category, name="create_category"),
     path('add-subcategory', views.add_subcategory, name="add_subcategory"),
+    path('add-subcategory/create', views.create_subcategory, name="create_subcategory"),
 ]

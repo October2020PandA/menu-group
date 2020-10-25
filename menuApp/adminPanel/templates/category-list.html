@@ -1,0 +1,8 @@
+
+                                <label for="category">Category <a href="" class="badge badge-info add-new-category" data-toggle="modal" data-target="#categoryModal">Add New</a></label>
+                                <select class="form-control" id="category" name="category">
+                                    <option selected disabled>Please Choose...</option>
+                                    {% for category in categories %}
+                                    <option value='{{category.id}}'>{{category.category_name}}</option>
+                                    {% endfor %}
+                                </select>

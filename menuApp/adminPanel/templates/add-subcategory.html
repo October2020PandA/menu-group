@@ -1,5 +1,5 @@
 
-<form action="" method="POST">
+<form action="" method="POST" class="form-add-subcategory">
     {% csrf_token %}
     <div class="modal-header">
         <h5 class="modal-title">Add SubCategory</h5>
@@ -16,12 +16,21 @@
             </ul>
         {% endif %}
         <div class="form-group">
+            <label for="category">Category</label>
+            <select class="form-control" id="category" name="category" required>
+                <option selected disabled>Please Choose...</option>
+                {% for category in categories %}
+                <option value='{{category.id}}'>{{category.category_name}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
             <label for="subcategory_name">New SubCategory Name</label>
-            <input type="text" class="form-control" name="subcategory_name" id="subcategory_name">
+            <input type="text" class="form-control" name="subcategory_name" id="subcategory_name" required>
         </div>
     </div>
     <div class="modal-footer">
-        <button type="submit" class="btn btn-primary">Add SubCategory</button>
+        <button type="submit" class="btn btn-primary submit-subcategory">Add SubCategory</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
     </div>
 </form>

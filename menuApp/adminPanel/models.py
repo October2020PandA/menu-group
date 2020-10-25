@@ -43,6 +43,7 @@ class Location(models.Model):
     county = models.CharField(max_length=100, blank=True)
     country = models.CharField(max_length=255, blank=True)
     phone = models.CharField(max_length=50, blank=True)
+    post_code = models.CharField(max_length=50, blank=True)
     is_restaurant = models.BooleanField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

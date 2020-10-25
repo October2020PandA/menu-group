@@ -164,34 +164,15 @@
                         <i class="ml-3 text-white fa-2x fab fa-yelp"></i>
                     </div>
                     <div class="row my-2 border rounded pt-5 shadow">
+                        {% for location in locations %}
                         <div class="col-sm-6 col-lg-3 text-white text-center mb-5">
-                            <h4 class="mb-3">ATLANTA</h4>
-                            <p>1126 Coding Dojo Way</p>
-                            <p>Atlanta, GA 13572</p>
-                            <p>(123) 456-7890</p>
+                            <h4 class="mb-3">{{ location.location_name }}</h4>
+                            <p>{{ location.address1 }}</p>
+                            <p>{{ location.city }}, {{ location.state }} {{ location.post_code }}</p>
+                            <p>{{ location.phone }}</p>
                             <p>Mon-Sun 10 AM - 10PM</p>
                         </div>
-                        <div class="col-sm-6 col-lg-3 text-white text-center mb-5">
-                            <h4 class="mb-3">DALLAS</h4>
-                            <p>1126 Coding Dojo Way</p>
-                            <p>Dallas, TX 13572</p>
-                            <p>(123) 456-7890</p>
-                            <p>Mon-Sun 10 AM - 10PM</p>
-                        </div>
-                        <div class="col-sm-6 col-lg-3 text-white text-center mb-5">
-                            <h4 class="mb-3">SEATTLE</h4>
-                            <p>1126 Coding Dojo Way</p>
-                            <p>Seattle, WA 13572</p>
-                            <p>(123) 456-7890</p>
-                            <p>Mon-Sun 10 AM - 10PM</p>
-                        </div>
-                        <div class="col-sm-6 col-lg-3 text-white text-center mb-5">
-                            <h4 class="mb-3">PITTSBURGH</h4>
-                            <p>1126 Coding Dojo Way</p>
-                            <p>Pittsburgh, PA 13572</p>
-                            <p>(123) 456-7890</p>
-                            <p>Mon-Sun 10 AM - 10PM</p>
-                        </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>

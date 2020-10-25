@@ -113,8 +113,29 @@ def add_category(request):
 def add_subcategory(request):
     context = {
         'subcategories': SubCategory.objects.all().order_by('category'),
+        'categories': Category.objects.all(),
     }
     return render(request, 'add-subcategory.html', context)
+
+def create_subcategory(request):
+    if request.method == "POST":
+        if 'subcategory_name' in request.POST:
+            SubCategory.objects.create(subcategory_name=request.POST['subcategory_name'], category=Category.objects.get(id=request.POST['category']))
+        context = {
+            'subcategories': SubCategory.objects.filter(category=Category.objects.get(id=request.POST['category'])),
+        }
+        return render(request, 'subcategory-list.html', context)
+    return redirect('/menu-admin/')
+
+def create_category(request):
+    if request.method == "POST":
+        if 'category_name' in request.POST:
+            Category.objects.create(category_name=request.POST['category_name'])
+        context = {
+            'categories': Category.objects.all(),
+        }
+        return render(request, 'category-list.html', context)
+    return redirect('/menu-admin/')
 
 ## ---------- FAKE DATA ---------- ##
 

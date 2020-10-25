@@ -82,7 +82,7 @@ def openHoursCreate(request):
                     locHr.open_time = openTime
                     locHr.close_time = closeTime
                     locHr.save()
-    return redirect('/menu-admin/')
+    return redirect('/login/populate-data')
 
 @my_login_required(login_url="/login/")
 def employee(request):
@@ -149,9 +149,9 @@ def clearDb(request):
     return redirect('/login/')
 
 def fakeData(request):
-    Location.objects.create(location_name="Main Plaza", address1='123 Way', city='New York', state='New York', country='USA', phone='5555551234', is_restaurant=1)
-    Location.objects.create(location_name="Times Square", address1='123 Way', city='New York', state='New York', country='USA', phone='5555551234', is_restaurant=1)
-    Location.objects.create(location_name="The Shore", address1='123 Way', city='Shore', state='New Jersey', country='USA', phone='5555551234', is_restaurant=1)
+    Location.objects.create(location_name="Main Plaza", address1='123 Way', city='New York', state='New York', country='USA', phone='+1 (555) 555-1234', is_restaurant=1, post_code='10032')
+    Location.objects.create(location_name="Times Square", address1='123 Way', city='New York', state='New York', country='USA', phone='+1 (555) 555-1234', is_restaurant=1, post_code='10032')
+    Location.objects.create(location_name="The Shore", address1='123 Way', city='Shore', state='New Jersey', country='USA', phone='+1 (555) 555-1234', is_restaurant=1, post_code='10032')
     LocationHour.objects.create(day_of_week='monday', open_time="06:00 AM", close_time="05:00 PM", location=Location.objects.get(location_name="Main Plaza"))
     LocationHour.objects.create(day_of_week='monday', open_time="06:00 AM", close_time="05:00 PM", location=Location.objects.get(location_name="Times Square"))
     LocationHour.objects.create(day_of_week='monday', open_time="06:00 AM", close_time="05:00 PM", location=Location.objects.get(location_name="The Shore"))
@@ -168,10 +168,20 @@ def fakeData(request):
     LocationHour.objects.create(day_of_week='friday', open_time="06:00 AM", close_time="05:00 PM", location=Location.objects.get(location_name="Times Square"))
     LocationHour.objects.create(day_of_week='friday', open_time="06:00 AM", close_time="05:00 PM", location=Location.objects.get(location_name="The Shore"))
     Category.objects.create(category_name="Lunch")
-    SubCategory.objects.create(subcategory_name="Entree", category=Category.objects.get(category_name="Lunch"))
-    Item.objects.create(item_name="Burger", item_desc="It's real beef and tasty", item_price="10.00", min_calories="800", max_calories="1200", dietary="N/A", is_available=1, category=Category.objects.get(category_name="Lunch"), subcategory=SubCategory.objects.get(subcategory_name="Entree"))
-    Item.objects.create(item_name="Chicken Fingers", item_desc="They're raised right, yadda, yadda", item_price="9.00", min_calories="600", max_calories="1200", dietary="N/A", is_available=1, category=Category.objects.get(category_name="Lunch"), subcategory=SubCategory.objects.get(subcategory_name="Entree"))
-    Item.objects.create(item_name="Soysage", item_desc="This is if you have an aversion to dead animals", item_price="10.00", min_calories="700", max_calories="900", dietary="Vegan Friendly", is_available=1, category=Category.objects.get(category_name="Lunch"), subcategory=SubCategory.objects.get(subcategory_name="Entree"))
+    Category.objects.create(category_name="Dinner")
+    Category.objects.create(category_name="Bar")
+    SubCategory.objects.create(subcategory_name="Salads", category=Category.objects.get(category_name="Lunch"))
+    SubCategory.objects.create(subcategory_name="Soups", category=Category.objects.get(category_name="Lunch"))
+    SubCategory.objects.create(subcategory_name="Entrees", category=Category.objects.get(category_name="Lunch"))
+    SubCategory.objects.create(subcategory_name="Appetizers", category=Category.objects.get(category_name="Dinner"))
+    SubCategory.objects.create(subcategory_name="Entrees", category=Category.objects.get(category_name="Dinner"))
+    SubCategory.objects.create(subcategory_name="Desserts", category=Category.objects.get(category_name="Dinner"))
+    SubCategory.objects.create(subcategory_name="Wine", category=Category.objects.get(category_name="Bar"))
+    SubCategory.objects.create(subcategory_name="Beer", category=Category.objects.get(category_name="Bar"))
+    SubCategory.objects.create(subcategory_name="Liquor", category=Category.objects.get(category_name="Bar"))
+    Item.objects.create(item_name="Burger", item_desc="It's real beef and tasty", item_price="10.00", min_calories="800", max_calories="1200", dietary="N/A", is_available=1, category=Category.objects.get(category_name="Lunch"), subcategory=SubCategory.objects.get(subcategory_name="Entrees", category=Category.objects.get(category_name="Lunch")))
+    Item.objects.create(item_name="Chicken Fingers", item_desc="They're raised right, yadda, yadda", item_price="9.00", min_calories="600", max_calories="1200", dietary="N/A", is_available=1, category=Category.objects.get(category_name="Lunch"), subcategory=SubCategory.objects.get(subcategory_name="Entrees", category=Category.objects.get(category_name="Lunch")))
+    Item.objects.create(item_name="Soysage", item_desc="This is if you have an aversion to dead animals", item_price="10.00", min_calories="700", max_calories="900", dietary="Vegan Friendly", is_available=1, category=Category.objects.get(category_name="Lunch"), subcategory=SubCategory.objects.get(subcategory_name="Entrees", category=Category.objects.get(category_name="Lunch")))
     Item.objects.get(item_name="Soysage").locations.add(Location.objects.get(location_name="Main Plaza"))
     Item.objects.get(item_name="Soysage").locations.add(Location.objects.get(location_name="Times Square"))
     Item.objects.get(item_name="Soysage").locations.add(Location.objects.get(location_name="The Shore"))
@@ -181,4 +191,4 @@ def fakeData(request):
     Item.objects.get(item_name="Chicken Fingers").locations.add(Location.objects.get(location_name="Main Plaza"))
     Item.objects.get(item_name="Chicken Fingers").locations.add(Location.objects.get(location_name="Times Square"))
     Item.objects.get(item_name="Chicken Fingers").locations.add(Location.objects.get(location_name="The Shore"))
-    return HttpResponse('Fake Data Added')
+    return redirect('/menu-admin/')
