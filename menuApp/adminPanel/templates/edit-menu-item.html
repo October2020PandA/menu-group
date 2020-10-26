@@ -5,110 +5,120 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title> Edit {{ recipe.title }}</title>
         {% load static %}
-        <link rel="stylesheet" href="{% static 'main.css' %}">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     </head>
     <body>
         <div class="container">
             <div class="card mx-auto mt-3">
-                <h5 class="card-header">Edit {{ item.item_name}}</h5>
+                <!-- FORM - ADD MENU ITEM -->
+                <h5 class="card-header">Edit {{ item.item_name }}</h5>
                 <div class="card-body">
-                    <!--ERROR MESSAGE-->
-                    {% if messages %}
-                    <ul class="messages">
-                        {% for message in messages %}
-                            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-                        {% endfor %}
-                    </ul>
-                    {% endif %}
-                    <!-- FORM - ADD MENU ITEM -->    
-                    <form action="/update/{{ item.id }}" method="POST" enctype="multipart/form-data">
-                        {% csrf_token %}
-                        <div class="row">
-                            <div class="col-lg">
-                                <div class="form-group">
-                                    <label for="item_name">Item Name</label>
-                                    <text class="form-control" name="item_name">{{ item.item_name }}</text>
-                                    <!-- <input type="text" class="form-control" id="item_name" name="item_name">{{ item.item_name }} -->
+                <form action="/menu-admin/update-menu-item/{{ item.id }}" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-lg">
+                            <div class="form-group">
+                                <label for="item_name">Item Name</label>
+                                <input type="text" class="form-control" id="item_name" name="item_name" value="{{ item.item_name }}">
+                            </div>
+                        </div>
+                        <div class="col-lg">
+                            <div class="form-group">
+                                <label for="item_desc">Item Description</label>
+                                <input type="text" class="form-control" id="item_desc" name="item_desc" value="{{ item.item_desc }}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg">
+                            <div class="form-group">
+                                <label for="item_price">Price</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">$</span>
+                                    </div>
+                                    <input type="number" step="0.01" class="form-control" id="item_price" name="item_price" value="{{ item.item_price }}" required>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="form-group">
+                                <label for="min_calories">Min Calories</label>
+                                <input type="text" class="form-control" id="min_calories" name="min_calories"  value="{{ item.min_calories }}" required>
+                            </div>  
+                        </div>
+                        <div class="col-md">
+                            <div class="form-group">
+                                <label for="max_calories">Max Calories</label>
+                                <input type="text" class="form-control" id="max_calories" name="max_calories"  value="{{ item.max_calories }}" required>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="form-group">
+                                <label for="dietary">Dietary Restrictions</label>
+                                <input type="text" class="form-control" id="dietary" name="dietary"  value="{{ item.dietary }}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md">
+                            <div class="form-group">
+                                <label for="category">Category <a href="" class="badge badge-info">Add New</a></label>
+                                <select class="form-control" id="category" name="category">
+                                    {% for category in categories %}
+                                    <option value='{{category.id}}'{% if item.category.id == category.id %} selected{%endif%}>{{category.category_name}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="form-group subcategory-dynamic">
+                                <label for="subcategory">Subcategory <a href="" class="badge badge-info">Add New</a></label>
+                                <select class="form-control" id="subcategory" name="subcategory">
+                                    {% for subcategory in subcategories %}
+                                    <option value='{{subcategory.id}}'{% if item.subcategory.id == subcategory.id %} selected{%endif%}>{{subcategory.subcategory_name}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="form-group">
+                                <label for="item_image">Upload Different Image</label>
+                                <input type="file" class="form-control" id="item_image" name="item_image" accept="image/png, .jpeg, .jpg">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Is this currently availabe?</span>
                                 </div>
-                                <div class="col-lg">
-                                    <div class="form-group">
-                                        <label for="item_desc">Item Description</label>
-                                        <text class="form-control" name="item_desc">{{ item.item_desc }}</text>
-                                        <!-- <input type="text" class="form-control" id="item_desc" name="item_desc"> -->
+                                <div class="input-group-append">
+                                    <div class="input-group-text">
+                                        <input type="radio" id="is_available" name="is_available" value="True"{% if item.is_available %} checked="checked"{%endif%}>
+                                        &nbsp;Yes&nbsp;&nbsp;
+                                        <input type="radio" id="is_not_available" name="is_available" value="False"{% if not item.is_available %} checked="checked"{%endif%}>
+                                        &nbsp;No
                                     </div>
                                 </div>
-                                <div class="col-lg">
-                                    <div class="form-group">
-                                        <label for="item_price">Price</label>
-                                        <text class="form-control" name="item_price">{{ item.item_price }}</text>
-                                        <!-- <input type="text" class="form-control" id="item_price" name="item_price"> -->
-                                    </div>
-                                </div>
-                            </div>
-                        <div class="row">
-                            <div class="col-md">
-                                <div class="form-group">
-                                    <label for="min_calories">Min Calories</label>
-                                    <text class="form-control" name="min_calories">{{ item.min_calories }}</text>
-                                    <!-- <input type="text" class="form-control" id="min_calories" name="min_calories"> -->
-                                </div>  
-                            </div>
-                            <div class="col-md">
-                                <div class="form-group">
-                                    <label for="max_calories">Max Calories</label>
-                                    <text class="form-control" name="max_calories">{{ item.max_calories }}</text>
-                                    <!-- <input type="text" class="form-control" id="max_calories" name="max_calories"> -->
-                                </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md">
-                                <div class="form-group">
-                                    <label for="dietary">Dietary Restrictions</label>
-                                    <text class="form-control" name="dietary">{{ item.dietary }}</text>
-                                    <!-- <input type="text" class="form-control" id="dietary" name="dietary"> -->
-                                </div>
-                            
-                                <!-- CATEGORY & SUBCATEGORY --> 
-
-                                <!-- <div class="form-group">
-                                    <label for="category">Category</label>
-                                    <select class="">
-                                        <option selected disabled>Please Choose...</option>
-                                        {% for category in categories %}
-                                        <option value='{{category.id}}'>{{category.category_name}}</option>
-                                        {% endfor %}
-                                    </select>
-                                    <input type="text" class="form-control" id="category" name="category">
-                                </div>
-                            </div>
-                            <div class="col-md">
-                                <div class="form-group">
-                                    <label for="subcategory">Subategory</label>
-                                    <input type="text" class="form-control" id="subcategory" name="subcategory">
-                                </div>
-                            </div> -->
-                        </div>
-                        <div class="row">
-                            <div class="col-md">
-                                <div class="form-group">
-                                    <label for="item_image">Upload Image</label>
-                                    <input type="file" class="form-control" id="item_image" name="item_image">
-                                </div>
-                                <div class="form-group">
-                                    <label for="is_available">Available</label><br>
-                                    <input type="radio" id="is_available" name="is_available" value="True">
-                                    <label for="male">Yes</label><br>
-                                    <input type="radio" id="is_available" name="is_not_available" value="False">
-                                    <label for="female">No</label>
-                                </div>
-                            </div>
-                        </div>
-                        <button class="btn btn-primary" type="submit">Update</button>
-                    </form>
-                </div>
+                    </div>
+                    <button class="btn btn-primary mt-3" type="submit">Save Changes</button>
+                    <a class="btn btn-primary mt-3" href="/menu-admin/">Go Back</a>
+                </form>
+            </div>
+            <div class="card-footer">
+                {% for message in messages %}
+                    <div class="text-danger alert alert-dismissible" role="alert">
+                        {{ message }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endfor %}
+            </div>
             </div>
         </div>
         <!-- Footer & Copyright -->
@@ -121,5 +131,24 @@
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+            $("#category").on("click", function() {
+                $(".subcategory-dynamic").children().removeClass("invisible");
+                if ($(this).val() != null) {
+                    cat_name = $(this).val();
+                    const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+                    $.ajax({
+                        headers: {'X-CSRFToken': csrftoken},
+                        url: '/menu-admin/grab-subcategory',
+                        method: 'post',
+                        data: {category_id: cat_name, 'csrfmiddlewaretoken': csrftoken},
+                        success: function(ServerResponse) {
+                            $('.subcategory-dynamic').html(ServerResponse)
+                        }
+                    });
+                };
+            });
+        </script>
     </body>
 </html>

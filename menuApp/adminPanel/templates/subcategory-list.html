@@ -1,0 +1,8 @@
+
+                                <label for="subcategory">Subcategory <a href="" class="badge badge-info add-new-subcategory" data-toggle="modal" data-target="#categoryModal">Add New</a></label>
+                                    <select class="form-control" id="subcategory" name="subcategory">
+                                        <option selected disabled>Please Choose...</option>
+                                        {% for subcategory in subcategories %}
+                                        <option value='{{subcategory.id}}'>{{subcategory.subcategory_name}}</option>
+                                        {% endfor %}
+                                    </select>

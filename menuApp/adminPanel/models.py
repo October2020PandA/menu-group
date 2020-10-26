@@ -32,7 +32,8 @@ class ItemManager(models.Manager):
             errors['item_desc'] = "Item description is required." 
         elif len(postData['item_desc']) < 5:
             errors['item_desc'] = "Item description must be at least 5 charcters long."
-        
+        return errors
+
 class Location(models.Model):
     location_name = models.CharField(max_length=255)
     address1 = models.CharField(max_length=255)
@@ -69,7 +70,7 @@ class SubCategory(models.Model):
 class Item(models.Model):
     item_name = models.CharField(max_length=255)
     item_desc = models.TextField()
-    item_price = models.DecimalField(max_digits=7, decimal_places=3)
+    item_price = models.DecimalField(max_digits=7, decimal_places=2)
     #Need to create media/images folder to store uploaded images into the database
     item_image = models.ImageField(upload_to='images/', blank=True, null=True) 
     min_calories = models.IntegerField()
