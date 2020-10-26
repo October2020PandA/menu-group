@@ -22,7 +22,7 @@ class Migration(migrations.Migration):
                 ('order_discount', models.DecimalField(decimal_places=3, max_digits=7)),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
                 ('updated_at', models.DateTimeField(auto_now=True)),
-                ('location', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='orders', related_query_name='orders', to='adminPanel.location')),
+                ('location', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='orders', related_query_name='orders', to='adminPanel.Location')),
             ],
         ),
         migrations.CreateModel(
@@ -41,14 +41,14 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
                 ('updated_at', models.DateTimeField(auto_now=True)),
-                ('order', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='history', related_query_name='history', to='pointOfSale.order')),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='orderHistory', related_query_name='orderHistory', to='logreg.user')),
+                ('order', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='history', related_query_name='history', to='pointOfSale.Order')),
+                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='orderHistory', related_query_name='orderHistory', to='logreg.User')),
             ],
         ),
         migrations.AddField(
             model_name='order',
             name='order_type',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='orders', related_query_name='orders', to='pointOfSale.ordertype'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='orders', related_query_name='orders', to='pointOfSale.OrderType'),
         ),
         migrations.CreateModel(
             name='Bill',
@@ -61,7 +61,7 @@ class Migration(migrations.Migration):
                 ('sale_date', models.DateTimeField(auto_now_add=True)),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
                 ('updated_at', models.DateTimeField(auto_now=True)),
-                ('order', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='billAmount', related_query_name='billAmount', to='pointOfSale.order')),
+                ('order', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='billAmount', related_query_name='billAmount', to='pointOfSale.Order')),
             ],
         ),
     ]

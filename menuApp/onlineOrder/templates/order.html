@@ -57,11 +57,13 @@
                       <p>1x food item   price</p>
                       <p>1x food item   price</p>
                       <p>1x food item   price</p>
-                      <p>Total:</p>
-                      <p>Tax:</p>
-                      <p>Tip:</p>
-                      <p>Grand Total:</p>
-                      <a class="btn btn-danger" href="/order-online/checkout">Pay Now</a>
+                      <div style="text-align: right; margin-top: 100px;">
+                        <p>Total</p>
+                        <p>Tax</p>
+                        <p>Tip</p>
+                        <p>Grand Total</p>
+                      </div>
+                      <a class="btn btn-danger" href="/order-online/checkout" style="width: 270px;">Pay Now</a>
                     </div>
                   </div>
               </div>
@@ -77,15 +79,16 @@
           </div>
         </div>
           <div class="row" style="margin-top: 35px;">
+            {% for item in items %}
             <div class="col" style="text-align: center;">
-                <img src="/static/images/blank.png" alt="blank">
-                <h5>Name</h5>
-                <p>Description</p>
-                <p>Calories</p>
-                <p>Price</p>
-                <button type="button" class="btn btn-danger">Order</button>
+              <img class="thumbnail" src="{{item.item_image.media}}" alt="food"></a>
+                <h5>{{item.item_name}}</h5>
+                <p>{{item.min_calories}}-{{item.max_calories}} cal</p>
+                <p>${{item.item_price}}</p>
+                <button data-product={{item.id}} data-action="add" class="btn btn-danger update-cart">Order</button>
             </div>
-            <div class="col" style="text-align: center;">
+            {% endfor %}
+            <!-- <div class="col" style="text-align: center;">
                 <img src="/static/images/blank.png" alt="blank">
                 <h5>Name</h5>
                 <p>Description</p>
@@ -141,19 +144,17 @@
                 <p>Description</p>
                 <p>Calories</p>
                 <p>Price</p>
-                <button type="button" class="btn btn-danger">Order</button>
+                <button type="button" class="btn btn-danger">Order</button> -->
             </div>
           </div>
         </div>
       </main>
-      <p>Items</p>
-      {% for item in items %}
-        <p>{{item.item_name}}</p>
+      {% for category in categories %}
+       <p>{{category.category_name}}</p>
       {% endfor %}
-      <p>Location</p>
-      <p>Category</p>
-      {% for category in categories%}
-      <p>{{category.category_name}}</p>
-      {%endfor%}
-</body>
+      {% for item in items %}
+      <p>{{item.item_name}}</p>
+      <p>{{item.item_image}}</p>
+      {% endfor%}
+<script src="{% static 'js/checkout.js' %}"></script>
 </html>
