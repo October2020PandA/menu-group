@@ -1,0 +1,14 @@
+// override default colors
+$theme-colors: (
+    "primary": #096e90,
+    "secondary": #252e32,
+    "warning": #e2b332,
+    "success": #059430,
+);
+
+$enable-shadows: true;
+
+
+// import bootstrap
+
+@import "../../bootstrap/scss/bootstrap.scss"

@@ -3,11 +3,84 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>All Menu Items</title>
         {% load static %}
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        {% load bootstrap4 %}
+        {% bootstrap_javascript jquery='full' %}
+        <link rel="stylesheet" href="{% static 'css/admin_panel.css' %}">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Questrial" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+
+        <title>All Menu Items</title>
+        <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"> -->
     </head>
     <body>
+        <!-- NAV -->
+        <nav class="navbar navbar-expand-md navbar-dark bg-secondary">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainPosNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <span class="d-md-none navbar-brand mx-auto">
+                    <h2 class="font-weight-bold my-2">NAME HERE</h2>
+                </span>
+                <div class="collapse navbar-collapse" id="mainPosNav">
+                    <ul class="navbar-nav my-2">
+                        <li class="nav-item d-none d-md-inline border rounded px-2 mr-2 active">
+                          <a class="nav-link" href="#"><i class="fas fa-utensils"></i></a>
+                        </li>
+                        <li class="nav-item d-none d-md-inline border rounded px-2 mr-2">
+                          <a class="nav-link" href="#"><i class="fas fa-stopwatch"></i></a>
+                        </li>
+                        <li class="nav-item d-none d-md-inline border rounded px-2 mr-2">
+                          <a class="nav-link" href="#"><i class="fas fa-chart-line"></i></a>
+                        </li>
+                    </ul>
+                    <ul class="d-md-none navbar-nav my-2">
+                        <li class="nav-item px-2 mr-2 active">
+                          <a class="nav-link" href="#">POS</a>
+                        </li>
+                        <li class="nav-item px-2 mr-2">
+                          <a class="nav-link" href="#">CLOCK IN/OUT</a>
+                        </li>
+                        <li class="nav-item px-2 mr-2">
+                          <a class="nav-link" href="#">SALES</a>
+                        </li>
+                    </ul>
+                    <form class="d-md-none form-inline my-3">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                  <i class="fas fa-search"></i>
+                                </span>
+                            </div>
+                            <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="button">GO</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <span class="d-none d-md-inline-block navbar-brand mx-auto">
+                    <h2 class="font-weight-bold my-2">NAME HERE</h2>
+                </span>
+                <div class="collapse navbar-collapse">
+                    <form class="form-inline ml-auto my-3">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                  <i class="fas fa-search"></i>
+                                </span>
+                            </div>
+                            <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="button">GO</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </nav>
+
 
         <!-- ADD TABLE (LIST) OF ALL MENU ITEMS HERE -->
         <div class="container">
