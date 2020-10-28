@@ -12,7 +12,6 @@
     <title>Online Order</title>
 </head>
 <body>
-
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
             <button class="navbar-toggler" data-toggle="collapse" data-target="#mainNavbar">
@@ -53,15 +52,13 @@
                   <div class="sidebar-content">
                     <div class="shadow p-3 mb-5 bg-white rounded">
                       <h3 style="text-align: center;">Your Order</h3>
-                      <p>1x food item   price</p>
-                      <p>1x food item   price</p>
-                      <p>1x food item   price</p>
-                      <p>1x food item   price</p>
-                      <div style="text-align: right; margin-top: 100px;">
+                      {% for item in items %}
+                      <p style="float: right;">${{item.item_price}}</p>
+                      <p>{{item.item_name}}</p>
+                      {% endfor %}
+                      <div style= "margin-top: 100px;">
+                        <p style="float: right;">$29.00</p>
                         <p>Total</p>
-                        <p>Tax</p>
-                        <p>Tip</p>
-                        <p>Grand Total</p>
                       </div>
                       <a class="btn btn-danger" href="/order-online/checkout" style="width: 270px;">Pay Now</a>
                     </div>
@@ -74,87 +71,24 @@
         <div class="container-fluid">
           <div class="row" style="margin-top: 20px;">
               <div class="col-lg-9">
-                <p style="text-align: center;"><a href="">Appetizers</a><a href="">Entree</a><a href="">Sides</a><a href="">Dessert</a><a href="">Drink</a></p>
+                <p style="text-align: center;"><a href="">Appetizers</a><a class="entree" href="">Entree</a><a href="">Sides</a><a href="">Dessert</a><a href="">Drink</a></p>
               </div>
           </div>
         </div>
-          <div class="row" style="margin-top: 35px;">
+          <div class="row items"style="margin-top: 35px;">
             {% for item in items %}
             <div class="col" style="text-align: center;">
-              <img class="thumbnail" src="{{item.item_image.media}}" alt="food"></a>
+              <img class="thumbnail" src="{{item.item_image.url}}" alt="food" style="width:230px;"></a>
                 <h5>{{item.item_name}}</h5>
+                <p style="font-size: 10px;"><em>{{item.item_desc}}</em></p>
                 <p>{{item.min_calories}}-{{item.max_calories}} cal</p>
                 <p>${{item.item_price}}</p>
-                <button data-product={{item.id}} data-action="add" class="btn btn-danger update-cart">Order</button>
+                <button data-item={{item.id}} data-action="add" class="btn btn-danger update-cart">Order</button>
             </div>
             {% endfor %}
-            <!-- <div class="col" style="text-align: center;">
-                <img src="/static/images/blank.png" alt="blank">
-                <h5>Name</h5>
-                <p>Description</p>
-                <p>Calories</p>
-                <p>Price</p>
-                <button type="button" class="btn btn-danger">Order</button>
-            </div>
-            <div class="col" style="text-align: center;">
-                <img src="/static/images/blank.png" alt="blank">
-                <h5>Name</h5>
-                <p>Description</p>
-                <p>Calories</p>
-                <p>Price</p>
-                <button type="button" class="btn btn-danger">Order</button>
-            </div>
-            <div class="col" style="text-align: center;">
-                <img src="/static/images/blank.png" alt="blank">
-                <h5>Name</h5>
-                <p>Description</p>
-                <p>Calories</p>
-                <p>Price</p>
-                <button type="button" class="btn btn-danger">Order</button>
-            </div>
-          </div>
-          <div class="row" style="margin-top: 35px;">
-            <div class="col" style="text-align: center;">
-                <img src="/static/images/blank.png" alt="blank">
-                <h5>Name</h5>
-                <p>Description</p>
-                <p>Calories</p>
-                <p>Price</p>
-                <button type="button" class="btn btn-danger">Order</button>
-            </div>
-            <div class="col" style="text-align: center;">
-                <img src="/static/images/blank.png" alt="blank">
-                <h5>Name</h5>
-                <p>Description</p>
-                <p>Calories</p>
-                <p>Price</p>
-                <button type="button" class="btn btn-danger">Order</button>
-            </div>
-            <div class="col" style="text-align: center;">
-                <img src="/static/images/blank.png" alt="blank">
-                <h5>Name</h5>
-                <p>Description</p>
-                <p>Calories</p>
-                <p>Price</p>
-                <button type="button" class="btn btn-danger">Order</button>
-            </div>
-            <div class="col" style="text-align: center;">
-                <img src="/static/images/blank.png" alt="blank">
-                <h5>Name</h5>
-                <p>Description</p>
-                <p>Calories</p>
-                <p>Price</p>
-                <button type="button" class="btn btn-danger">Order</button> -->
             </div>
           </div>
         </div>
-      </main>
-      {% for category in categories %}
-       <p>{{category.category_name}}</p>
-      {% endfor %}
-      {% for item in items %}
-      <p>{{item.item_name}}</p>
-      <p>{{item.item_image}}</p>
-      {% endfor%}
-<script src="{% static 'js/checkout.js' %}"></script>
+    </main>
+    <script src="{% static 'js/order.js' %}"></script>
 </html>
