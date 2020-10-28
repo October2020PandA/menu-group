@@ -125,7 +125,7 @@
                             <div class="col-lg-3 col-sm-6 mb-4">
                                 <a href="#orderModal" id="item_cards" data-toggle="modal" data-target="#orderModal">
                                     <div id="item_display{{ item.id }}" style="display: none;" class="card h-100">
-                                        <img src="../static/images/ingredients.jpg" class="card-img-top" alt="pos_item_image">
+                                        <img src="{% if item.item_image %}{{ item.item_image.url }}{% endif %}" class="card-img-top" alt="pos_item_image">
                                         <div class="card-body p-3">
                                             <h5 class="card-title font-weight-bold text-primary text-uppercase">{{ item.item_name }}</h5>
                                             <h5 class="text-success">${{ item.item_price }}</h5>
