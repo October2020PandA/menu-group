@@ -51,7 +51,7 @@
                         {% for location in locations %}
                         <div class="col-lg-6 mb-4">
                             <h4 id="reservation_location_headings" class="text-primary text-uppercase font-weight-bold">{{ location.location_name }}</h4>
-                            <p class="lead font-weight-bold">+1 (555) 555-5555</p>
+                            <p class="lead font-weight-bold">{{ location.phone }}</p>
                         </div>
                         {% endfor %}
                     </div>

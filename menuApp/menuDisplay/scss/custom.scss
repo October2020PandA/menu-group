@@ -37,9 +37,23 @@ body{
 //homepage
 
 #home_page_showcase{
-    background: url("../images/burger.jpg") bottom center / cover;
+    background: url("../images/food.jpeg") bottom center / cover;
     min-height: 720px;
     position: relative;
+
+    #header{
+        z-index: 2;
+    }
+
+    #overlay{
+        background: rgba(0,0,0,0.3);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
 }
 
 #home_page_cards{
@@ -51,9 +65,23 @@ body{
 //menu page
 
 #menu_showcase{
-    background: url("../images/burger.jpg") bottom center / cover;
+    background: url("../images/food.jpeg") bottom center / cover;
     min-height: 600px;
     position: relative;
+
+    #header{
+        z-index: 2;
+    }
+
+    #overlay{
+        background: rgba(0,0,0,0.3);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
 }
 
 #menu_categories{

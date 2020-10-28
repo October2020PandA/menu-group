@@ -11,7 +11,7 @@ def index(request):
     }
     return render(request, 'pos_home.html', context)
 
-def add_to_order(request, item_id):
+def add_to_order(request):
     Order.objects.create(
         
     )
