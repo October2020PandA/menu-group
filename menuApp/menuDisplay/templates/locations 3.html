@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            {% load static %}
+            {% load bootstrap4 %}
+            {% bootstrap_javascript jquery='full' %}
+            <link rel="stylesheet" href="{% static 'css/app.css' %}">
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+            <link href="https://fonts.googleapis.com/css?family=Questrial" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+            <title>Locations</title>
+        </head>
+        <body>
+            <nav class="navbar navbar-expand-md navbar-dark p-4">
+                <a href="#" class="navbar-brand">
+                    <h2 class="mb-0">NAME HERE</h2>
+                </a>
+                <button class="navbar-toggler" data-toggle="collapse" data-target="#mainNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="mainNavbar">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="/" class="nav-link">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/menu" class="nav-link">Menu</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/reservations" class="nav-link">Reservations</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a href="/locations" class="nav-link">Locations/Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <div id="locations_showcase" class="d-flex justify-content-center align-items-center">
+                <div id="overlay"></div>
+                <div id="header" class= "container text-center text-white">
+                    <h1 id="locations_heading" class="display-2 mt-5 font-weight-bold">LOCATIONS</h1>
+                </div>
+            </div>
+            <div class="container py-3">
+                <h1 class="display-4 text-center font-weight-bold my-5">RESTAURANTS</h1>
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div id="location_cards" class="card h-100 shadow">
+                            <div class="card-body text-center">
+                                <h4 id="location_card_headings" class="card-title text-primary mb-4">ATLANTA</h4>
+                                <p class="card-text">1126 Coding Dojo Way</p>
+                                <p class="card-text mb-4">Atlanta, GA 13572</p>
+                                <p class="card-text">(123) 456-7890</p>
+                                <p class="card-text mb-3">Mon-Sun 10 AM - 10PM</p>
+                            </div>
+                            <div class="card-footer">
+                                <a href="/reservations" class="my-2 btn btn-outline-primary btn-block">MAKE A RESERVATION</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div id="location_cards" class="card h-100 shadow">
+                            <div class="card-body text-center">
+                                <h4 id="location_card_headings" class="card-title text-primary mb-4">DALLAS</h4>
+                                <p class="card-text">1126 Coding Dojo Way</p>
+                                <p class="card-text mb-4">Dallas, TX 13572</p>
+                                <p class="card-text">(123) 456-7890</p>
+                                <p class="card-text mb-3">Mon-Sun 10 AM - 10PM</p>
+                            </div>
+                            <div class="card-footer">
+                                <a href="/reservations" class="my-2 btn btn-outline-primary btn-block">MAKE A RESERVATION</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div id="location_cards" class="card h-100 shadow">
+                            <div class="card-body text-center">
+                                <h4 id="location_card_headings" class="card-title text-primary mb-4">SEATTLE</h4>
+                                <p class="card-text">1126 Coding Dojo Way</p>
+                                <p class="card-text mb-4">Seattle, WA 13572</p>
+                                <p class="card-text">(123) 456-7890</p>
+                                <p class="card-text mb-3">Mon-Sun 10 AM - 10PM</p>
+                            </div>
+                            <div class="card-footer">
+                                <a href="/reservations" class="my-2 btn btn-outline-primary btn-block">MAKE A RESERVATION</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div id="location_cards" class="card h-100 shadow">
+                            <div class="card-body text-center">
+                                <h4 id="location_card_headings" class="card-title text-primary mb-4">PITTSBURGH</h4>
+                                <p class="card-text">1126 Coding Dojo Way</p>
+                                <p class="card-text mb-4">Pittsburgh, PA 13572</p>
+                                <p class="card-text">(123) 456-7890</p>
+                                <p class="card-text mb-3">Mon-Sun 10 AM - 10PM</p>
+                            </div>
+                            <div class="card-footer">
+                                <a href="/reservations" class="my-2 btn btn-outline-primary btn-block">MAKE A RESERVATION</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container text-center">
+                <hr>
+                <h1 class="display-4 font-weight-bold mt-5">CONTACT US</h1>
+            </div>
+            <div class="container my-5">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="container border rounded p-5 shadow mb-5">
+                            <form>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="first_name">First Name</label>
+                                            <input type="text" id="first_name" class="form-control" placeholder="First Name">
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="last_name">Last Name</label>
+                                            <input type="text" id="last_name" class="form-control" placeholder="Last Name">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="text" class="form-control" placeholder="Email">
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone_number">Phone Number</label>
+                                    <input type="text" class="form-control" placeholder="(555) 555-5555">
+                                </div>
+                                <div class="form-group">
+                                    <label for="specialNotes">Message</label>
+                                    <textarea id="specialNotes" rows="3" class="form-control"></textarea>
+                                    <small class="text-muted">We appreciate your feedback!</small>
+                                </div>
+                                <button class="btn btn-primary btn-block btn-lg shadow-lg my-3">SEND</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="text-center col-lg-6">
+                        <h4 class="text-bold mt-5 mb-3">
+                            MANAGEMENT OFFICE
+                        </h4>
+                        <p><i class="fas fa-phone"></i> (555) 555 - 5555</p>
+                        <p class="mb-5"><i class="fas fa-envelope"></i> steve@steve.com</p>
+                        <h4 class="text-bold mb-3">
+                            EVENT BOOKING
+                        </h4>
+                        <p><i class="fas fa-phone"></i> (555) 555 - 5555</p>
+                        <p><i class="fas fa-envelope"></i> melissa@melissa.com</p>
+                    </div>
+                </div>
+            </div>
+            <div id="footer" class="p-5">
+                <div class="container">
+                    <div class="row text-center">
+                        <div class="col d-sm-none">
+                            <h2 class="text-white mb-3">LOCATIONS</h2>
+                        </div>
+                    </div>
+                    <div class="row text-center">
+                        <div class="col d-sm-none mb-3">
+                            <i class="ml-auto text-white fa-2x fab fa-instagram"></i>
+                            <i class="ml-3 text-white fa-2x fab fa-facebook-square"></i>
+                            <i class="ml-3 text-white fa-2x fab fa-twitter-square"></i>
+                            <i class="ml-3 text-white fa-2x fab fa-yelp"></i>
+                        </div>
+                    </div>
+                    <div class="container d-none d-sm-flex">
+                        <h2 class="text-white mb-5">LOCATIONS</h2>
+                        <i class="ml-auto text-white fa-2x fab fa-instagram"></i>
+                        <i class="ml-3 text-white fa-2x fab fa-facebook-square"></i>
+                        <i class="ml-3 text-white fa-2x fab fa-twitter-square"></i>
+                        <i class="ml-3 text-white fa-2x fab fa-yelp"></i>
+                    </div>
+                    <div class="row my-2 border rounded pt-5 shadow">
+                        <div class="col-sm-6 col-lg-3 text-white text-center mb-5">
+                            <h4 class="mb-3">ATLANTA</h4>
+                            <p>1126 Coding Dojo Way</p>
+                            <p>Atlanta, GA 13572</p>
+                            <p>(123) 456-7890</p>
+                            <p>Mon-Sun 10 AM - 10PM</p>
+                        </div>
+                        <div class="col-sm-6 col-lg-3 text-white text-center mb-5">
+                            <h4 class="mb-3">DALLAS</h4>
+                            <p>1126 Coding Dojo Way</p>
+                            <p>Dallas, TX 13572</p>
+                            <p>(123) 456-7890</p>
+                            <p>Mon-Sun 10 AM - 10PM</p>
+                        </div>
+                        <div class="col-sm-6 col-lg-3 text-white text-center mb-5">
+                            <h4 class="mb-3">SEATTLE</h4>
+                            <p>1126 Coding Dojo Way</p>
+                            <p>Seattle, WA 13572</p>
+                            <p>(123) 456-7890</p>
+                            <p>Mon-Sun 10 AM - 10PM</p>
+                        </div>
+                        <div class="col-sm-6 col-lg-3 text-white text-center mb-5">
+                            <h4 class="mb-3">PITTSBURGH</h4>
+                            <p>1126 Coding Dojo Way</p>
+                            <p>Pittsburgh, PA 13572</p>
+                            <p>(123) 456-7890</p>
+                            <p>Mon-Sun 10 AM - 10PM</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </body>
+    </html>

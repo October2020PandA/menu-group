@@ -10,15 +10,18 @@ import json
 from django.core.files.storage import FileSystemStorage # import for image files
 from django.views.generic import CreateView # import for image files
 from django.urls import reverse_lazy # import for image files
+from django.views.decorators.csrf import csrf_exempt
 
 stripe.api_key = "sk_test_51HaCGMEF86nHrkFh9YWAwMtKJU8JvLbFgaOtc2Kt4vYsY20R8CPmT5x69w25VbFqPZXuA2AMAPgR6S4oYBdtCe9Y00QkFFoZvZ"
 
 # Create your views here.
 def index(request):
+    order, created = OnlineOrder.objects.get_or_create(complete=False)
+    cartItems = OnlineOrder.get_cart_items
     context = {
         'items': Item.objects.all(),
-        'locations': Location.objects.all(),
-        'categories': Category.objects.all(),
+        'order': order,
+        'cartItems': cartItems,
     }
     return render(request, 'order.html', context)
 
@@ -26,32 +29,41 @@ def items(request):
     pass
 
 def cart(request):
-    pass
+    order, created = OnlineOrder.objects.get_or_create(complete=False)
+    items = order.orderitem_set.all()
+    cartItems = OnlineOrder.get_cart_items
+    context = {
+        'items': items,
+        'order': order,
+        'cartItems': cartItems,
 
+    }
+    return redirect('/order-online')
+
+@csrf_exempt
 def updateItem(request):
-    if request.method == 'POST':
-        data = json.loads(request.body)
-        itemId = data['itemId']
-        action = data['action']
+    data = json.loads(request.body)
+    itemId = data['itemId']
+    action = data['action']
 
-        print('Action:', action)
-        print('itemId:', itemId)
+    print('Action:', action)
+    print('itemId:', itemId)
 
-        item = Item.objects.get(id=itemId)
-        order, created = Order.objects.get_or_create(complete=False)
+    item = Item.objects.filter(id=itemId)
+    order, created = OnlineOrder.objects.get_or_create(id=itemId, complete=False)
 
-        orderItem, created = OrderItem.objects.get_or_create(order=order, product=product)
+    orderItem, created = OrderItem.objects.get_or_create(OnlineOrder=OnlineOrder, item=item)
 
-        if action == 'add':
-            orderItem.quantity = (orderItem.quantity + 1)
-        elif action == 'remove':
-            orderItem.quantity = (orderItem.quantity - 1)
-        orderItem.save()
+    if action == 'add':
+        orderItem.quantity = (orderItem.quantity + 1)
+    elif action == 'remove':
+        orderItem.quantity = (orderItem.quantity - 1)
+    orderItem.save()
 
-        if orderItem.quantity <= 0:
-            orderItem.delete()
+    if orderItem.quantity <= 0:
+        orderItem.delete()
 
-        return JsonResponse('Item was added', safe=False)
+    return JsonResponse('Item was added', safe=False)
 
 def processOrder(request):
     pass
@@ -60,7 +72,7 @@ def charge(request):
     if request.method == 'POST':
         print('Data:', request.POST)
 
-        amount = 1
+        amount = 36
 
         customer = stripe.Customer.create(
             name = request.POST['name'],
@@ -77,7 +89,10 @@ def charge(request):
 
 
 def checkout(request):
-    return render(request, 'checkout.html')
+    context = {
+        'items': Item.objects.all(),
+    }
+    return render(request, 'checkout.html', context)
 
 def success(request):
     return render(request, 'success.html')

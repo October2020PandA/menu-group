@@ -1,3 +1,7 @@
 from django.contrib import admin
+from .models import OnlineOrder, OrderItem
+from adminPanel.models import Item
 
-# Register your models here.
+admin.site.register(OnlineOrder)
+admin.site.register(OrderItem)
+admin.site.register(Item)
