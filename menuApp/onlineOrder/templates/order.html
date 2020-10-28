@@ -53,8 +53,10 @@
                     <div class="shadow p-3 mb-5 bg-white rounded">
                       <h3 style="text-align: center;">Your Order</h3>
                       {% for item in items %}
+                      {% if item.is_available == True %}
                       <p style="float: right;">${{item.item_price}}</p>
                       <p>{{item.item_name}}</p>
+                      {% endif %}
                       {% endfor %}
                       <div style= "margin-top: 100px;">
                         <p style="float: right;">$29.00</p>
@@ -75,18 +77,22 @@
               </div>
           </div>
         </div>
+        {% for category in categories %}
           <div class="row items"style="margin-top: 35px;">
-            {% for item in items %}
+            {% for item in category.item_category.all %}
+            {% if item.is_available == True %}
             <div class="col" style="text-align: center;">
-              <img class="thumbnail" src="{{item.item_image.url}}" alt="food" style="width:230px;"></a>
+              <img class="thumbnail" src="{% if item.item_image %}{{ item.item_image.url }}{% elif item.category.category_name == 'Bar' %}{% static 'images/placeholdercup.jpg'%}{% else %}{% static 'images/placeholder.jpg'%}{% endif %}" alt="food" style="width:230px;"></a>
                 <h5>{{item.item_name}}</h5>
                 <p style="font-size: 10px;"><em>{{item.item_desc}}</em></p>
                 <p>{{item.min_calories}}-{{item.max_calories}} cal</p>
                 <p>${{item.item_price}}</p>
                 <button data-item={{item.id}} data-action="add" class="btn btn-danger update-cart">Order</button>
             </div>
+            {% endif %}
             {% endfor %}
             </div>
+            {% endfor %}
           </div>
         </div>
     </main>

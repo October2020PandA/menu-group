@@ -19,6 +19,7 @@ def index(request):
     order, created = OnlineOrder.objects.get_or_create(complete=False)
     cartItems = OnlineOrder.get_cart_items
     context = {
+        'categories': Category.objects.all(),
         'items': Item.objects.all(),
         'order': order,
         'cartItems': cartItems,

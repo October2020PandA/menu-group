@@ -1,11 +1,13 @@
 from django.shortcuts import render, redirect, HttpResponse
 from django.contrib import messages
 from adminPanel.models import *
+from logreg.decorators import my_user_passes_test, my_login_required
 from django.core.files.storage import FileSystemStorage # import for image files
 from django.views.generic import CreateView # import for image files
 from django.urls import reverse_lazy # import for image files
 
 ## may be ignored or made into landing page later, ignore for now 
+@my_login_required(login_url="/login/")
 def index(request): 
     # return HttpResponse('Menu Display')
     context = {
@@ -19,6 +21,7 @@ def index(request):
 ## ---------- CRUD MENU ITEMS ---------- ##
 
 ## Add Menu Item
+@my_login_required(login_url="/login/")
 def add_item(request): 
     context = {
         'categories': Category.objects.all(),
@@ -26,6 +29,7 @@ def add_item(request):
     }
     return render(request, 'add-menu-item.html', context)
 
+@my_login_required(login_url="/login/")
 def create_item(request):
     if request.method == ("POST" or "FILES"):
         errors = Item.objects.item_validator(request.POST)
@@ -48,6 +52,7 @@ def create_item(request):
     return redirect('/menu-admin/')
 
 ## Edit Menu Item 
+@my_login_required(login_url="/login/")
 def edit(request, item_id):
     context = {
         'item': Item.objects.get(id=item_id),
@@ -58,6 +63,7 @@ def edit(request, item_id):
 
 
 ## Update Menu Items (after editing)
+@my_login_required(login_url="/login/")
 def update(request, item_id):
     if request.method == 'POST': 
         update_item = Item.objects.filter(id=item_id)
@@ -78,11 +84,13 @@ def update(request, item_id):
     return redirect('/menu-admin/')
 
 # Delete Menu Items 
+@my_login_required(login_url="/login/")
 def destroy(request, item_id):
     Item.objects.get(id=item_id).delete()
     return redirect('/menu-admin/')
 
 ## View Menu (all menu items)
+@my_login_required(login_url="/login/")
 def view_items(request):
     context = {
         "all_items": Item.objects.all()
@@ -92,6 +100,7 @@ def view_items(request):
 
 ## ---------- UPLOAD IMAGE ---------- ##
 
+@my_login_required(login_url="/login/")
 def upload(request):
     context = {}
     if request.method == 'POST':
@@ -104,12 +113,14 @@ def upload(request):
     # UPDATE HTML LOCATION
     return render(request,'menu-dashbord.html', context) #location for this image 
 
+@my_login_required(login_url="/login/")
 def add_category(request):
     context = {
         'categories': Category.objects.all(),
     }
     return render(request, 'add-category.html', context)
 
+@my_login_required(login_url="/login/")
 def add_subcategory(request):
     context = {
         'subcategories': SubCategory.objects.all().order_by('category'),
@@ -117,6 +128,7 @@ def add_subcategory(request):
     }
     return render(request, 'add-subcategory.html', context)
 
+@my_login_required(login_url="/login/")
 def create_subcategory(request):
     if request.method == "POST":
         if 'subcategory_name' in request.POST:
@@ -127,6 +139,7 @@ def create_subcategory(request):
         return render(request, 'subcategory-list.html', context)
     return redirect('/menu-admin/')
 
+@my_login_required(login_url="/login/")
 def create_category(request):
     if request.method == "POST":
         if 'category_name' in request.POST:
@@ -140,6 +153,7 @@ def create_category(request):
 ## ---------- FAKE DATA ---------- ##
 
 ## Fake data to get category and subcategory to work
+@my_login_required(login_url="/login/")
 def fakeData(request):
     Category.objects.create(category_name="Drinks")
     cate = Category.objects.get(category_name="Drinks")
@@ -148,12 +162,14 @@ def fakeData(request):
     SubCategory.objects.create(subcategory_name="Wine", category=cate)
     return HttpResponse('Fake Data Added')
 
+@my_login_required(login_url="/login/")
 def view_subcategory(request):
     context = {
         'subcategories': SubCategory.objects.filter(category=Category.objects.get(id=request.POST['category_id'])),
     }
     return render(request, 'subcategory-list.html', context)
 
+@my_login_required(login_url="/login/")
 def view_item(request, item_id):
     context = {
         "item": Item.objects.get(id=item_id),

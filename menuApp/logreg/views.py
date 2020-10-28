@@ -5,6 +5,7 @@ from django.views.decorators.http import require_http_methods
 from .decorators import my_user_passes_test, my_login_required
 from logreg.models import User, Group, Permission
 from adminPanel.models import Location, LocationHour, Item, ItemOption, Category, SubCategory, ItemOption
+from onlineOrder.models import OnlineOrder, OrderItem
 from pointOfSale.models import Order, OrderType, OrderHistory, Bill
 from datetime import datetime
 import bcrypt
@@ -145,6 +146,8 @@ def clearDb(request):
     LocationHour.objects.all().delete()
     Category.objects.all().delete()
     SubCategory.objects.all().delete()
+    OnlineOrder.objects.all().delete()
+    OrderItem.objects.all().delete()
     print("kill time")
     return redirect('/login/')
 
@@ -179,9 +182,23 @@ def fakeData(request):
     SubCategory.objects.create(subcategory_name="Wine", category=Category.objects.get(category_name="Bar"))
     SubCategory.objects.create(subcategory_name="Beer", category=Category.objects.get(category_name="Bar"))
     SubCategory.objects.create(subcategory_name="Liquor", category=Category.objects.get(category_name="Bar"))
+    SubCategory.objects.create(subcategory_name="Mixed", category=Category.objects.get(category_name="Bar"))
+    Item.objects.create(item_name="Creature Comfort's Tropicalia", item_desc="India Pale Ale", item_price="5.00", min_calories="300", max_calories="300", dietary="N/A", is_available=1, category=Category.objects.get(category_name="Bar"), subcategory=SubCategory.objects.get(subcategory_name="Beer", category=Category.objects.get(category_name="Bar")))
+    Item.objects.create(item_name="Creature Comfort's Athena", item_desc="Berliner Weisse", item_price="5.00", min_calories="300", max_calories="300", dietary="N/A", is_available=1, category=Category.objects.get(category_name="Bar"), subcategory=SubCategory.objects.get(subcategory_name="Beer", category=Category.objects.get(category_name="Bar")))
+    Item.objects.create(item_name="Creature Comfort's Classic City Lager", item_desc="Good Cold Beer", item_price="4.00", min_calories="300", max_calories="300", dietary="N/A", is_available=1, category=Category.objects.get(category_name="Bar"), subcategory=SubCategory.objects.get(subcategory_name="Beer", category=Category.objects.get(category_name="Bar")))
+    Item.objects.create(item_name="Creature Comfort's Automatic", item_desc="Pale Ale", item_price="4.00", min_calories="300", max_calories="300", dietary="N/A", is_available=1, category=Category.objects.get(category_name="Bar"), subcategory=SubCategory.objects.get(subcategory_name="Beer", category=Category.objects.get(category_name="Bar")))
+    Item.objects.create(item_name="Creature Comfort's Bibo", item_desc="Pilsner", item_price="5.00", min_calories="300", max_calories="300", dietary="N/A", is_available=0, category=Category.objects.get(category_name="Bar"), subcategory=SubCategory.objects.get(subcategory_name="Beer", category=Category.objects.get(category_name="Bar")))
+    Item.objects.create(item_name="Creature Comfort's Reclaimed Rye", item_desc="Amber Ale Aged on French Oak", item_price="6.00", min_calories="300", max_calories="300", dietary="N/A", is_available=1, category=Category.objects.get(category_name="Bar"), subcategory=SubCategory.objects.get(subcategory_name="Beer", category=Category.objects.get(category_name="Bar")))
     Item.objects.create(item_name="Burger", item_desc="It's real beef and tasty", item_price="10.00", min_calories="800", max_calories="1200", dietary="N/A", is_available=1, category=Category.objects.get(category_name="Lunch"), subcategory=SubCategory.objects.get(subcategory_name="Entrees", category=Category.objects.get(category_name="Lunch")))
     Item.objects.create(item_name="Chicken Fingers", item_desc="They're raised right, yadda, yadda", item_price="9.00", min_calories="600", max_calories="1200", dietary="N/A", is_available=1, category=Category.objects.get(category_name="Lunch"), subcategory=SubCategory.objects.get(subcategory_name="Entrees", category=Category.objects.get(category_name="Lunch")))
     Item.objects.create(item_name="Soysage", item_desc="This is if you have an aversion to dead animals", item_price="10.00", min_calories="700", max_calories="900", dietary="Vegan Friendly", is_available=1, category=Category.objects.get(category_name="Lunch"), subcategory=SubCategory.objects.get(subcategory_name="Entrees", category=Category.objects.get(category_name="Lunch")))
+    Item.objects.create(item_name="Spicy Thai Chicken", item_desc="Spicy jalapeno bacon ipsum dolor amet frankfurter swine anim pancetta proident. Tail ut aute consequat sirloin excepteur aliqua pastrami voluptate.", item_price="13.00", min_calories="700", max_calories="900", dietary="Very Hot", is_available=1, category=Category.objects.get(category_name="Dinner"), subcategory=SubCategory.objects.get(subcategory_name="Entrees", category=Category.objects.get(category_name="Dinner")))
+    Item.objects.create(item_name="Sweet and Sour Beef Soup", item_desc="Tongue officia turkey ut, pariatur pork belly cillum.", item_price="11.00", min_calories="700", max_calories="900", dietary="N/A", is_available=1, category=Category.objects.get(category_name="Dinner"), subcategory=SubCategory.objects.get(subcategory_name="Entrees", category=Category.objects.get(category_name="Dinner")))
+    Item.objects.create(item_name="Beef Stew", item_desc="Aliquip picanha bacon cillum, tail beef duis. Boudin ham hock ex beef consectetur officia.", item_price="13.00", min_calories="700", max_calories="900", dietary="N/A", is_available=1, category=Category.objects.get(category_name="Dinner"), subcategory=SubCategory.objects.get(subcategory_name="Entrees", category=Category.objects.get(category_name="Dinner")))
+    Item.objects.create(item_name="Belini", item_desc="Liquor ipsum dolor sit amet odio kensington court special snowball mint julep condimentum, lectus.", item_price="10.00", min_calories="300", max_calories="300", dietary="N/A", is_available=1, category=Category.objects.get(category_name="Bar"), subcategory=SubCategory.objects.get(subcategory_name="Mixed", category=Category.objects.get(category_name="Bar")))
+    Item.objects.create(item_name="Bloody Mary", item_desc="Tellus, cutty sark scots whisky vitae tortor ketel one yorsh, ornare kir salty dog accumsan aenean chopin white horse.", item_price="15.00", min_calories="300", max_calories="300", dietary="N/A", is_available=1, category=Category.objects.get(category_name="Bar"), subcategory=SubCategory.objects.get(subcategory_name="Mixed", category=Category.objects.get(category_name="Bar")))
+    Item.objects.create(item_name="Black Russian", item_desc="Bowmore, netus colorado bulldog hendrerit ultrices; salty dog interdum caribou lou.", item_price="12.00", min_calories="300", max_calories="300", dietary="N/A", is_available=1, category=Category.objects.get(category_name="Bar"), subcategory=SubCategory.objects.get(subcategory_name="Mixed", category=Category.objects.get(category_name="Bar")))
+    Item.objects.create(item_name="God Mother", item_desc="Cursus gibson mattis rutrum french 75 himenaeos painkiller presbyterian jameson; cras bengal.", item_price="18.00", min_calories="300", max_calories="300", dietary="N/A", is_available=1, category=Category.objects.get(category_name="Bar"), subcategory=SubCategory.objects.get(subcategory_name="Mixed", category=Category.objects.get(category_name="Bar")))
     Item.objects.get(item_name="Soysage").locations.add(Location.objects.get(location_name="Main Plaza"))
     Item.objects.get(item_name="Soysage").locations.add(Location.objects.get(location_name="Times Square"))
     Item.objects.get(item_name="Soysage").locations.add(Location.objects.get(location_name="The Shore"))
