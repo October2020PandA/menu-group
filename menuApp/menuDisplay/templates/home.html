@@ -39,8 +39,9 @@
                 </div>
             </nav>
             <div id="home_page_showcase" class="d-flex justify-content-center align-items-center">
+                <div id="overlay"></div>
                 <div id="header" class= "container text-center text-white">
-                    <h1 class="display-2 mt-5 font-weight-bold">NAME HERE</h1>
+                    <h1 id="homepage_heading" class="display-2 mt-5 font-weight-bold">NAME HERE</h1>
                 </div>
             </div>
             <div class="container text-center my-5">
@@ -166,7 +167,7 @@
                     <div class="row my-2 border rounded pt-5 shadow">
                         {% for location in locations %}
                         <div class="col-sm-6 col-lg-3 text-white text-center mb-5">
-                            <h4 class="mb-3">{{ location.location_name }}</h4>
+                            <h4 class="text-uppercase font-weight-bold mb-3">{{ location.location_name }}</h4>
                             <p>{{ location.address1 }}</p>
                             <p>{{ location.city }}, {{ location.state }} {{ location.post_code }}</p>
                             <p>{{ location.phone }}</p>

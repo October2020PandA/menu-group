@@ -6,8 +6,7 @@
             {% load static %}
             {% load bootstrap4 %}
             {% bootstrap_javascript jquery='full' %}
-            <link rel="stylesheet" href="{% static 'css/app.css' %}">
-            <link rel="stylesheet" href="css/app.css">
+            <link rel="stylesheet" href="{% static 'css/pos_app.css' %}">
             <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
             <link href="https://fonts.googleapis.com/css?family=Questrial" rel="stylesheet">
             <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
@@ -45,19 +44,6 @@
                           <a class="nav-link" href="#">SALES</a>
                         </li>
                     </ul>
-                    <form class="d-md-none form-inline my-3">
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">
-                                  <i class="fas fa-search"></i>
-                                </span>
-                            </div>
-                            <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">GO</button>
-                            </div>
-                        </div>
-                    </form>
                 </div>
                 <span class="d-none d-md-inline-block navbar-brand mx-auto">
                     <h2 class="font-weight-bold my-2">NAME HERE</h2>
@@ -135,182 +121,21 @@
                 <div class="row">
                     <div class="col-md-7 col-lg-8 col-xl-9">
                         <div class="row mt-3">
-                            <div class="col-sm-6 col-lg-3 mb-4">
-                                <a href="#orderModal" id="item_cards" data-toggle="modal" data-target="#orderModal">
-                                    <div id="item1" style="display: none;" class="card h-100">
-                                        <img src="../static/images/ingredients.jpg" class="card-img-top" alt="pos_item_image">
+                            {% for item in items %}
+                            <div class="col-lg-3 col-sm-6 mb-4">
+                                <a href="#orderModal{{ item.id }}" id="item_cards" data-toggle="modal" data-target="#orderModal{{ item.id }}">
+                                    <div id="item_display" style="display: none;" class="card h-100">
+                                        {% if item.item_image %}
+                                        <img src="{{ item.item_image.url }}" class="card-img-top" alt="pos_item_image">
+                                        {% endif %}
                                         <div class="card-body p-3">
-                                            <h5 class="card-title font-weight-bold text-primary">ITEM NAME</h5>
-                                            <h5 class="text-success">$20.00</h5>
+                                            <h5 class="card-title font-weight-bold text-primary text-uppercase">{{ item.item_name }}</h5>
+                                            <h5 class="text-success">${{ item.item_price }}</h5>
                                         </div>
                                     </div>
                                 </a>
                             </div>
-                            <div class="col-sm-6 col-lg-3 mb-4">
-                                <a href="#orderModal" id="item_cards" data-toggle="modal" data-target="#orderModal">
-                                    <div id="item2" style="display: none;" class="card h-100">
-                                        <img src="../static/images/ingredients.jpg" class="card-img-top" alt="pos_item_image">
-                                        <div class="card-body p-3">
-                                            <h5 class="card-title font-weight-bold text-primary">ITEM NAME</h5>
-                                            <h5 class="text-success">$20.00</h5>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-sm-6 col-lg-3 mb-4">
-                                <a href="#orderModal" id="item_cards" data-toggle="modal" data-target="#orderModal">
-                                    <div id="item3" style="display: none;" class="card h-100">
-                                        <img src="../static/images/ingredients.jpg" class="card-img-top" alt="pos_item_image">
-                                        <div class="card-body p-3">
-                                            <h5 class="card-title font-weight-bold text-primary">ITEM NAME</h5>
-                                            <h5 class="text-success">$20.00</h5>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-sm-6 col-lg-3 mb-4">
-                                <a href="#orderModal" id="item_cards" data-toggle="modal" data-target="#orderModal">
-                                    <div id="item4" style="display: none;" class="card h-100">
-                                        <img src="../static/images/ingredients.jpg" class="card-img-top" alt="pos_item_image">
-                                        <div class="card-body p-3">
-                                            <h5 class="card-title font-weight-bold text-primary">ITEM NAME</h5>
-                                            <h5 class="text-success">$20.00</h5>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-sm-6 col-lg-3 mb-4">
-                                <a href="#orderModal" id="item_cards" data-toggle="modal" data-target="#orderModal">
-                                    <div id="item5" style="display: none;" class="card h-100">
-                                        <img src="../static/images/ingredients.jpg" class="card-img-top" alt="pos_item_image">
-                                        <div class="card-body p-3">
-                                            <h5 class="card-title font-weight-bold text-primary">ITEM NAME</h5>
-                                            <h5 class="text-success">$20.00</h5>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-sm-6 col-lg-3 mb-4">
-                                <a href="#orderModal" id="item_cards" data-toggle="modal" data-target="#orderModal">
-                                    <div id="item6" style="display: none;" class="card h-100">
-                                        <img src="../static/images/ingredients.jpg" class="card-img-top" alt="pos_item_image">
-                                        <div class="card-body p-3">
-                                            <h5 class="card-title font-weight-bold text-primary">ITEM NAME</h5>
-                                            <h5 class="text-success">$20.00</h5>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-sm-6 col-lg-3 mb-4">
-                                <a href="#orderModal" id="item_cards" data-toggle="modal" data-target="#orderModal">
-                                    <div id="item7" style="display: none;" class="card h-100">
-                                        <img src="../static/images/ingredients.jpg" class="card-img-top" alt="pos_item_image">
-                                        <div class="card-body p-3">
-                                            <h5 class="card-title font-weight-bold text-primary">ITEM NAME</h5>
-                                            <h5 class="text-success">$20.00</h5>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-sm-6 col-lg-3 mb-4">
-                                <a href="#orderModal" id="item_cards" data-toggle="modal" data-target="#orderModal">
-                                    <div id="item8" style="display: none;" class="card h-100">
-                                        <img src="../static/images/ingredients.jpg" class="card-img-top" alt="pos_item_image">
-                                        <div class="card-body p-3">
-                                            <h5 class="card-title font-weight-bold text-primary">ITEM NAME</h5>
-                                            <h5 class="text-success">$20.00</h5>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-sm-6 col-lg-3 mb-4">
-                                <a href="#orderModal" id="item_cards" data-toggle="modal" data-target="#orderModal">
-                                    <div id="item9" style="display: none;" class="card h-100">
-                                        <img src="../static/images/ingredients.jpg" class="card-img-top" alt="pos_item_image">
-                                        <div class="card-body p-3">
-                                            <h5 class="card-title font-weight-bold text-primary">ITEM NAME</h5>
-                                            <h5 class="text-success">$20.00</h5>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-sm-6 col-lg-3 mb-4">
-                                <a href="#orderModal" id="item_cards" data-toggle="modal" data-target="#orderModal">
-                                    <div id="item10" style="display: none;" class="card h-100">
-                                        <img src="../static/images/ingredients.jpg" class="card-img-top" alt="pos_item_image">
-                                        <div class="card-body p-3">
-                                            <h5 class="card-title font-weight-bold text-primary">ITEM NAME</h5>
-                                            <h5 class="text-success">$20.00</h5>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-sm-6 col-lg-3 mb-4">
-                                <a href="#orderModal" id="item_cards" data-toggle="modal" data-target="#orderModal">
-                                    <div id="item11" style="display: none;" class="card h-100">
-                                        <img src="../static/images/ingredients.jpg" class="card-img-top" alt="pos_item_image">
-                                        <div class="card-body p-3">
-                                            <h5 class="card-title font-weight-bold text-primary">ITEM NAME</h5>
-                                            <h5 class="text-success">$20.00</h5>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-sm-6 col-lg-3 mb-4">
-                                <a href="#orderModal" id="item_cards" data-toggle="modal" data-target="#orderModal">
-                                    <div id="item12" style="display: none;" class="card h-100">
-                                        <img src="../static/images/ingredients.jpg" class="card-img-top" alt="pos_item_image">
-                                        <div class="card-body p-3">
-                                            <h5 class="card-title font-weight-bold text-primary">ITEM NAME</h5>
-                                            <h5 class="text-success">$20.00</h5>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-sm-6 col-lg-3 mb-4">
-                                <a href="#orderModal" id="item_cards" data-toggle="modal" data-target="#orderModal">
-                                    <div id="item13" style="display: none;" class="card h-100">
-                                        <img src="../static/images/ingredients.jpg" class="card-img-top" alt="pos_item_image">
-                                        <div class="card-body p-3">
-                                            <h5 class="card-title font-weight-bold text-primary">ITEM NAME</h5>
-                                            <h5 class="text-success">$20.00</h5>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-sm-6 col-lg-3 mb-4">
-                                <a href="#orderModal" id="item_cards" data-toggle="modal" data-target="#orderModal">
-                                    <div id="item14" style="display: none;" class="card h-100">
-                                        <img src="../static/images/ingredients.jpg" class="card-img-top" alt="pos_item_image">
-                                        <div class="card-body p-3">
-                                            <h5 class="card-title font-weight-bold text-primary">ITEM NAME</h5>
-                                            <h5 class="text-success">$20.00</h5>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-sm-6 col-lg-3 mb-4">
-                                <a href="#orderModal" id="item_cards" data-toggle="modal" data-target="#orderModal">
-                                    <div id="item15" style="display: none;" class="card h-100">
-                                        <img src="../static/images/ingredients.jpg" class="card-img-top" alt="pos_item_image">
-                                        <div class="card-body p-3">
-                                            <h5 class="card-title font-weight-bold text-primary">ITEM NAME</h5>
-                                            <h5 class="text-success">$20.00</h5>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-sm-6 col-lg-3 mb-4">
-                                <a href="#orderModal" id="item_cards" data-toggle="modal" data-target="#orderModal">
-                                    <div id="item16" style="display: none;" class="card h-100">
-                                        <img src="../static/images/ingredients.jpg" class="card-img-top" alt="pos_item_image">
-                                        <div class="card-body p-3">
-                                            <h5 class="card-title font-weight-bold text-primary">ITEM NAME</h5>
-                                            <h5 class="text-success">$20.00</h5>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
+                            {% endfor %}
                         </div>
                     </div>
                     <div class="col-md-5 col-lg-4 col-xl-3">
@@ -322,9 +147,9 @@
                                 <div class="card-body text-center">
                                     <h5 class="card-title d-inline-block font-weight-bold">Item name</h5>
                                     <h5 class="d-inline-block font-weight-bold">QTY</h5>
-                                    <p class="card-text font-weight-bold">Price: $(item price)</p>
-                                    <a href="#" class="btn btn-sm btn-warning text-white">EDIT</a>
-                                    <a href="#" class="btn btn-sm btn-danger">DELETE</a>
+                                    <p class="card-text font-weight-bold">Price: ${{ item.price }}</p>
+                                    <a href="#orderModal" data-target="#orderModal" data-toggle="modal" class="btn btn-sm btn-warning text-white">EDIT</a>
+                                    <a href="delete" class="btn btn-sm btn-danger">DELETE</a>
                                 </div>
                                 <div class="card-footer">
                                     <a href="#" class="btn btn-primary d-block my-1">DISCOUNTS</a>
@@ -336,76 +161,63 @@
                                     <p class="card-text text-success">Total Price:</p>
                                 </div>
                                 <div class="card-footer">
-                                    <a href="#" class="btn btn-success d-block my-1">CHARGE</a>
+                                    <a href="checkout" class="btn btn-success d-block my-1">CHARGE</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="modal" id="orderModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
+            {% for item in items %}
+            <div class="modal" id="orderModal{{ item.id }}" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h2 class="font-weight-bold modal-title" id="orderModalLabel">ITEM NAME</h2>
+                            <h2 class="font-weight-bold modal-title text-uppercase" id="orderModalLabel">{{ item.item_name }}</h2>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
-                            <div class="row">
-                                <div class="col-8">
-                                    <label for="temperature" class="font-weight-bold">Temperature:</label>
-                                    <div class="container mb-2">
-                                        <div class="custom-control custom-radio">
-                                            <input type="radio" name="shipMethod" class="custom-control-input" id="rare">
-                                            <label for="rare" class="custom-control-label">Rare</label>
-                                        </div>
-                                        <div class="custom-control custom-radio">
-                                            <input type="radio" name="shipMethod" class="custom-control-input" id="mediumRare">
-                                            <label for="mediumRare" class="custom-control-label">Medium Rare</label>
-                                        </div>
-                                        <div class="custom-control custom-radio">
-                                            <input type="radio" name="shipMethod" class="custom-control-input" id="medium">
-                                            <label for="medium" class="custom-control-label">Medium</label>
-                                        </div>
-                                        <div class="custom-control custom-radio">
-                                            <input type="radio" name="shipMethod" class="custom-control-input" id="mediumWell">
-                                            <label for="mediumWell" class="custom-control-label">Medium Well</label>
-                                        </div>
-                                        <div class="custom-control custom-radio">
-                                            <input type="radio" name="shipMethod" class="custom-control-input" id="wellDone">
-                                            <label for="wellDone" class="custom-control-label">Well Done</label>
-                                        </div>
-                                    </div>
+                            <label for="sides" class="font-weight-bold">Choose a Side Dish:</label>
+                            <div class="container mb-2">
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" name="side_choice" class="custom-control-input" id="side1">
+                                    <label for="side1" class="custom-control-label">Side 1</label>
+                                </div>
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" name="side_choice" class="custom-control-input" id="side2">
+                                    <label for="side2" class="custom-control-label">Side 2</label>
+                                </div>
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" name="side_choice" class="custom-control-input" id="side3">
+                                    <label for="side3" class="custom-control-label">Side 3</label>
+                                </div>
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" name="side_choice" class="custom-control-input" id="side4">
+                                    <label for="side4" class="custom-control-label">Side 4</label>
+                                </div>
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" name="side_choice" class="custom-control-input" id="side5">
+                                    <label for="side5" class="custom-control-label">Side 5</label>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-8">
-                                    <label for="specialNotes" class="mb-3 font-weight-bold">Special Instructions:</label>
-                                    <textarea id="specialNotes" rows="3" class="form-control" placeholder="food allergies, no cheese, etc."></textarea>
-                                </div>
-                                <div class="col-4 mt-3">
-                                    <button class="btn-lg btn-primary d-block text-white mb-3 py-4">ADD SIDES</button>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-8 d-flex">
-                                    <p class="text-success font-weight-bold mt-3">Item Price: $20.00</p>
-                                    <div id="qty_form" class="ml-auto d-flex align-items-center justify-content-center">
-                                        <button class="btn" id="qty_minus"><i class="fas fa-minus-circle fa-2x text-secondary"></i></button>
-                                        <input type="text" value="1" id="qty_field" name="quantity">
-                                        <button class="btn" id="qty_plus" ><i class="fas fa-plus-circle fa-2x text-secondary"></i></button>
-                                    </div>
-                                </div>
+                            <label for="specialNotes" class="mb-3 font-weight-bold">Special Instructions:</label>
+                            <textarea id="specialNotes" rows="3" class="form-control" placeholder="food allergies, no cheese, extra spicy, etc."></textarea>
+                            <p class="lead text-center text-success font-weight-bold mt-3">Price: ${{ item.item_price }}</p>
+                            <div id="qty_form" class="ml-auto d-flex align-items-center justify-content-center">
+                                <button class="btn" id="qty_minus"><i class="fas fa-minus-circle fa-2x text-secondary"></i></button>
+                                <input type="text" value="1" id="qty_field" class="text-center" name="quantity">
+                                <button class="btn" id="qty_plus" ><i class="fas fa-plus-circle fa-2x text-secondary"></i></button>
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-block btn-primary py-3">ADD TO ORDER</button>
+                            <a href="add_to_order" type="button" class="btn btn-block btn-primary py-3">ADD TO ORDER</a>
                         </div>
                     </div>
                 </div>
             </div>
+            {% endfor %}
         </body>
         <script>
             $(document).ready(function(){
@@ -445,58 +257,25 @@
                     $("#subCategoryNav").fadeIn("fast");
                 });
                 $("#subCategoryButton1").click(function(){
-                    $("#item1").show();
-                    $("#item2").show();
-                    $("#item3").show();
-                    $("#item4").show();
-                    $("#item5").show();
-                    $("#item6").show();
-                    $("#item7").show();
-                    $("#item8").show();
-                    $("#item9").show();
-                    $("#item10").show();
-                    $("#item11").show();
-                    $("#item12").show();
-                    $("#item13").show();
-                    $("#item14").show();
-                    $("#item15").show();
-                    $("#item16").show();
+                    var x = document.querySelectorAll("#item_display");
+                    var i;
+                    for(i=0; i < x.length; i++){
+                        $(x[i]).show();
+                    }
                 });
                 $("#subCategoryButton2").click(function(){
-                    $("#item1").show();
-                    $("#item2").show();
-                    $("#item3").show();
-                    $("#item4").show();
-                    $("#item5").show();
-                    $("#item6").show();
-                    $("#item7").show();
-                    $("#item8").show();
-                    $("#item9").show();
-                    $("#item10").show();
-                    $("#item11").show();
-                    $("#item12").show();
-                    $("#item13").show();
-                    $("#item14").show();
-                    $("#item15").show();
-                    $("#item16").show();
+                    var x = document.querySelectorAll("#item_display");
+                    var i;
+                    for(i=0; i < x.length; i++){
+                        $(x[i]).show();
+                    }
                 });
                 $("#subCategoryButton3").click(function(){
-                    $("#item1").show();
-                    $("#item2").show();
-                    $("#item3").show();
-                    $("#item4").show();
-                    $("#item5").show();
-                    $("#item6").show();
-                    $("#item7").show();
-                    $("#item8").show();
-                    $("#item9").show();
-                    $("#item10").show();
-                    $("#item11").show();
-                    $("#item12").show();
-                    $("#item13").show();
-                    $("#item14").show();
-                    $("#item15").show();
-                    $("#item16").show();
+                    var x = document.querySelectorAll("#item_display");
+                    var i;
+                    for(i=0; i < x.length; i++){
+                        $(x[i]).show();
+                    }
                 });
                 $("#categoryNavItem1").click(function(){
                     $("#categoryDivider").fadeIn("fast");
@@ -534,60 +313,26 @@
                     $("#subCategoryButton3").show();
                 });
                 $("#subCategoryNavItem1").click(function(){
-                    $("#item1").show();
-                    $("#item2").show();
-                    $("#item3").show();
-                    $("#item4").show();
-                    $("#item5").show();
-                    $("#item6").show();
-                    $("#item7").show();
-                    $("#item8").show();
-                    $("#item9").show();
-                    $("#item10").show();
-                    $("#item11").show();
-                    $("#item12").show();
-                    $("#item13").show();
-                    $("#item14").show();
-                    $("#item15").show();
-                    $("#item16").show();
+                    var x = document.querySelectorAll("#item_display");
+                    var i;
+                    for(i=0; i < x.length; i++){
+                        $(x[i]).show();
+                    }
                 });
                 $("#subCategoryNavItem2").click(function(){
-                    $("#item1").show();
-                    $("#item2").show();
-                    $("#item3").show();
-                    $("#item4").show();
-                    $("#item5").show();
-                    $("#item6").show();
-                    $("#item7").show();
-                    $("#item8").show();
-                    $("#item9").show();
-                    $("#item10").show();
-                    $("#item11").show();
-                    $("#item12").show();
-                    $("#item13").show();
-                    $("#item14").show();
-                    $("#item15").show();
-                    $("#item16").show();
+                    var x = document.querySelectorAll("#item_display");
+                    var i;
+                    for(i=0; i < x.length; i++){
+                        $(x[i]).show();
+                    }
                 });
                 $("#subCategoryNavItem3").click(function(){
-                    $("#item1").show();
-                    $("#item2").show();
-                    $("#item3").show();
-                    $("#item4").show();
-                    $("#item5").show();
-                    $("#item6").show();
-                    $("#item7").show();
-                    $("#item8").show();
-                    $("#item9").show();
-                    $("#item10").show();
-                    $("#item11").show();
-                    $("#item12").show();
-                    $("#item13").show();
-                    $("#item14").show();
-                    $("#item15").show();
-                    $("#item16").show();
+                    var x = document.querySelectorAll("#item_display");
+                    var i;
+                    for(i=0; i < x.length; i++){
+                        $(x[i]).show();
+                    }
                 });
             });
-
         </script>
     </html>
