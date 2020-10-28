@@ -47,8 +47,7 @@
                 {% for category in categories %}
                 {% if category.item_category.all %}
                 <div class="container">
-                    <hr>
-                    <h2 class="text-center text-primary my-5">{{category.category_name}}</h2>
+                    <h3 id="menu_categories" class="text-center text-primary text-uppercase font-weight-bold my-5">{{category.category_name}}</h3>
                     <div class="row">
                         {% for item in category.item_category.all %}
                         <div class="col-md-6 col-xl-4 mb-3">
@@ -91,7 +90,7 @@
                     <div class="row my-2 border rounded pt-5 shadow">
                         {% for location in locations %}
                         <div class="col-sm-6 col-lg-3 text-white text-center mb-5">
-                            <h4 class="mb-3">{{ location.location_name }}</h4>
+                            <h4 class="text-uppercase font-weight-bold mb-3">{{ location.location_name }}</h4>
                             <p>{{ location.address1 }}</p>
                             <p>{{ location.city }}, {{ location.state }} {{ location.post_code }}</p>
                             <p>{{ location.phone }}</p>

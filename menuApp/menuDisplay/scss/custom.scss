@@ -56,6 +56,10 @@ body{
     position: relative;
 }
 
+#menu_categories{
+    font-family: "Merriweather", sans-serif;
+}
+
 
 //reservations page
 
@@ -77,6 +81,10 @@ body{
         height: 100%;
         z-index: 1;
     }
+}
+
+#reservation_location_headings{
+    font-family: "Merriweather", sans-serif;
 }
 
 #reservation_cards{

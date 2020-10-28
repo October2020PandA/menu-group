@@ -47,13 +47,14 @@
             <div class="container py-3">
                 <h1 class="display-4 text-center font-weight-bold my-5">RESTAURANTS</h1>
                 <div class="row">
+                    {% for location in locations %}
                     <div class="col-lg-3 col-md-6 mb-4">
                         <div id="location_cards" class="card h-100 shadow">
                             <div class="card-body text-center">
-                                <h4 id="location_card_headings" class="card-title text-primary mb-4">ATLANTA</h4>
-                                <p class="card-text">1126 Coding Dojo Way</p>
-                                <p class="card-text mb-4">Atlanta, GA 13572</p>
-                                <p class="card-text">(123) 456-7890</p>
+                                <h4 id="location_card_headings" class="card-title text-primary text-uppercase font-weight-bold mb-4">{{ location.location_name }}</h4>
+                                <p class="card-text">{{ location.address1 }}</p>
+                                <p class="card-text mb-4">{{ location.city }}, {{ location.state }} {{ location.post_code }}</p>
+                                <p class="card-text">{{ location.phone }}</p>
                                 <p class="card-text mb-3">Mon-Sun 10 AM - 10PM</p>
                             </div>
                             <div class="card-footer">
@@ -61,48 +62,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6 mb-4">
-                        <div id="location_cards" class="card h-100 shadow">
-                            <div class="card-body text-center">
-                                <h4 id="location_card_headings" class="card-title text-primary mb-4">DALLAS</h4>
-                                <p class="card-text">1126 Coding Dojo Way</p>
-                                <p class="card-text mb-4">Dallas, TX 13572</p>
-                                <p class="card-text">(123) 456-7890</p>
-                                <p class="card-text mb-3">Mon-Sun 10 AM - 10PM</p>
-                            </div>
-                            <div class="card-footer">
-                                <a href="/reservations" class="my-2 btn btn-outline-primary btn-block">MAKE A RESERVATION</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 mb-4">
-                        <div id="location_cards" class="card h-100 shadow">
-                            <div class="card-body text-center">
-                                <h4 id="location_card_headings" class="card-title text-primary mb-4">SEATTLE</h4>
-                                <p class="card-text">1126 Coding Dojo Way</p>
-                                <p class="card-text mb-4">Seattle, WA 13572</p>
-                                <p class="card-text">(123) 456-7890</p>
-                                <p class="card-text mb-3">Mon-Sun 10 AM - 10PM</p>
-                            </div>
-                            <div class="card-footer">
-                                <a href="/reservations" class="my-2 btn btn-outline-primary btn-block">MAKE A RESERVATION</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 mb-4">
-                        <div id="location_cards" class="card h-100 shadow">
-                            <div class="card-body text-center">
-                                <h4 id="location_card_headings" class="card-title text-primary mb-4">PITTSBURGH</h4>
-                                <p class="card-text">1126 Coding Dojo Way</p>
-                                <p class="card-text mb-4">Pittsburgh, PA 13572</p>
-                                <p class="card-text">(123) 456-7890</p>
-                                <p class="card-text mb-3">Mon-Sun 10 AM - 10PM</p>
-                            </div>
-                            <div class="card-footer">
-                                <a href="/reservations" class="my-2 btn btn-outline-primary btn-block">MAKE A RESERVATION</a>
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
             <div class="container text-center">
@@ -184,7 +144,7 @@
                     <div class="row my-2 border rounded pt-5 shadow">
                         {% for location in locations %}
                         <div class="col-sm-6 col-lg-3 text-white text-center mb-5">
-                            <h4 class="mb-3">{{ location.location_name }}</h4>
+                            <h4 class="text-uppercase font-weight-bold mb-3">{{ location.location_name }}</h4>
                             <p>{{ location.address1 }}</p>
                             <p>{{ location.city }}, {{ location.state }} {{ location.post_code }}</p>
                             <p>{{ location.phone }}</p>

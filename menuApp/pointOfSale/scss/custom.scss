@@ -2,6 +2,11 @@
 
 //main POS page
 
+body{
+    font-family: "Questrial", sans-serif;
+    background: linear-gradient(#edecec, white); 
+}
+
 .navbar{
     .nav-link:hover{
         border-bottom: none;
@@ -24,13 +29,7 @@
 
 #qty_field{
     width: 30px;
-    text-align: center;
 }
-
-input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-outer-spin-button {
-    display: none;
-}
-
 //media queries
 
 @media(max-width: 576px){

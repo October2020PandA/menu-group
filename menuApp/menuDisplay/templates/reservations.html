@@ -46,12 +46,19 @@
             </div>
             <div class="container p-5">
                 <div class="jumbotron my-5 text-center">
-                    <h1 class="font-weight-bold">MAKE A RESERVATION</h1>
-                    <p class="lead">Could potentially use the OpenTable API here, if that's too much work, I can just put a phone number for reservations here</p>
+                    <h1 class="display-4 font-weight-bold mb-5">MAKE A RESERVATION</h1>
+                    <div class="row">
+                        {% for location in locations %}
+                        <div class="col-lg-6 mb-4">
+                            <h4 id="reservation_location_headings" class="text-primary text-uppercase font-weight-bold">{{ location.location_name }}</h4>
+                            <p class="lead font-weight-bold">+1 (555) 555-5555</p>
+                        </div>
+                        {% endfor %}
+                    </div>
                 </div>
                 <hr>
                 <div>
-                  <h1 class="display-4 text-center my-5">EVENT BOOKING</h1>
+                  <h1 class="display-4 font-weight-bold text-center my-5">EVENT BOOKING</h1>
                 </div>
                 <div class="row mt-5">
                     <div class="card mb-5">
@@ -116,7 +123,7 @@
                     <div class="row my-2 border rounded pt-5 shadow">
                         {% for location in locations %}
                         <div class="col-sm-6 col-lg-3 text-white text-center mb-5">
-                            <h4 class="mb-3">{{ location.location_name }}</h4>
+                            <h4 class="text-uppercase font-weight-bold mb-3">{{ location.location_name }}</h4>
                             <p>{{ location.address1 }}</p>
                             <p>{{ location.city }}, {{ location.state }} {{ location.post_code }}</p>
                             <p>{{ location.phone }}</p>
