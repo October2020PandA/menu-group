@@ -7744,6 +7744,9 @@ body {
   .navbar .nav-link:hover {
     border-bottom: none; } }
 @media (max-width: 576px) {
+  .navbar .nav-link {
+    font-size: 1.5rem; }
+
   #location_cards {
     margin: 15px; } }
 
