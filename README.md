@@ -14,6 +14,6 @@ Ben Sherman: https://github.com/Redbeard29
 
 ## Demo
 ### Home and Menu Pages
-![home and menu pages gif](/Demo/home.gif)
+![home and menu pages gif](/Demo/menu_group_home.gif)
 ### Location and Reservation Pages
-![location and reservation pages gif](/Demo/reservations.gif)
+![location and reservation pages gif](/Demo/menu_group_reservations.gif)
