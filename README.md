@@ -13,4 +13,7 @@ Custom Restaurant Management is a restaurant application including POS system, t
 Ben Sherman: https://github.com/Redbeard29
 
 ## Demo
-Coming Soon!
+### Home and Menu Pages
+![home and menu pages gif](/Demo/home.gif)
+### Location and Reservation Pages
+![location and reservation pages gif](/Demo/reservations.gif)
